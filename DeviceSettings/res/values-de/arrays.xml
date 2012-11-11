@@ -1,0 +1,56 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string-array name="vibrator_intensity_entries">
+        <item>0%</item>
+        <item>25%</item>
+        <item>50% (Standard)</item>
+        <item>75%</item>
+        <item>100%</item>
+    </string-array>
+
+    <string-array name="hspa_entries">
+	    <item>Nur UMTS</item>
+	    <item>Nur HSDPA</item>
+	    <item>HSDPA + HSUPA</item>
+    </string-array>
+
+    <string-array name="mdnie_scenario_entries">
+        <item>CyanogenMod (Standard)</item>
+        <item>UI</item>
+        <item>Video</item>
+        <item>Video warm</item>
+        <item>Video kalt</item>
+        <item>Kamera</item>
+        <item>Navigation</item>
+        <item>Gallerie</item>
+        <item>VT</item>
+    </string-array>
+
+    <string-array name="mdnie_mode_entries">
+        <item>Dynamisch (Standard)</item>
+        <item>Standard</item>
+        <item>Natürlich</item>
+        <item>Film</item>
+    </string-array>
+
+    <string-array name="mdnie_negative_entries">
+        <item>Normal</item>
+        <item>Invertiert</item>
+    </string-array>
+
+    <string-array name="led_fade_entries">
+        <item>Blinken</item>
+        <item>Verblassen</item>
+    </string-array>
+
+    <string-array name="touchkey_timeout_entries">
+        <item>Niemals</item>
+        <item>1 Sekunde</item>
+        <item>2 Sekunden</item>
+        <item>3 Sekunden (Standard)</item>
+        <item>4 Sekunden</item>
+        <item>5 Sekunden</item>
+        <item>6 Sekunden</item>
+    </string-array>
+
+</resources>

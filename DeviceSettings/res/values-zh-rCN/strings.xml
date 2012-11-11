@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Galaxy Note 2 设置</string>
+
+    <string name="category_haptic_title">振动</string>
+    <string name="vibrator_subcat_title">振动器</string>
+    <string name="vibrator_intensity_title_head">振动器强度</string>
+    <string name="vibrator_intensity_summary_head">设置振动器强度</string>
+
+    <string name="category_radio_title">无线电</string>
+    <string name="hspa_title_head">HSPA</string>
+    <string name="hspa_summary_head">启用 HSDPA/HSUPA</string>
+
+    <string name="category_screen_title">屏幕</string>
+    <string name="mdnie_subcat_title">颜色</string>
+    <string name="mdnie_scenario_title_head">场景</string>
+    <string name="mdnie_scenario_summary_head">设置 mDNIe 场景</string>
+    <string name="mdnie_mode_title_head">模式</string>
+    <string name="mdnie_mode_summary_head">设置 mDNIe 模式</string>
+    <string name="mdnie_negative_title_head">负极模式</string>
+    <string name="mdnie_negative_summary_head">启用/禁用反色</string>
+
+    <string name="led_subcat_title">LED 指示灯</string>
+    <string name="led_fade_title_head">LED 淡出</string>
+    <string name="led_fade_summary_head">启用后 LED 指示灯将会产生淡出效果而替代闪烁效果.</string>
+
+    <string name="touchkey_subcat_title">触摸键</string>
+    <string name="touchkey_light_title_head">背光灯</string>
+    <string name="touchkey_light_summary_off">启用背光灯</string>
+    <string name="touchkey_light_summary_on">禁用背光灯</string>
+    <string name="touchkey_timeout_title_head">背光灯超时</string>
+    <string name="touchkey_timeout_summary_head">设置背光灯超时时间</string>
+</resources>

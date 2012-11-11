@@ -1,0 +1,56 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string-array name="vibrator_intensity_entries">
+        <item>0%</item>
+        <item>25%</item>
+        <item>50% (Alapbeállítás)</item>
+        <item>75%</item>
+        <item>100%</item>
+    </string-array>
+
+    <string-array name="hspa_entries">
+        <item>UMTS</item>
+        <item>HSDPA</item>
+        <item>HSDPA + HSUPA</item>
+    </string-array>
+
+    <string-array name="mdnie_scenario_entries">
+        <item>CyanogenMod (Alapbeállítás)</item>
+        <item>Felhasználói felület</item>
+        <item>Videó</item>
+        <item>Videó (Meleg árnyalat)</item>
+        <item>Videó (Hideg árnyalat)</item>
+        <item>Kamera</item>
+        <item>Navigáció</item>
+        <item>Galéria</item>
+        <item>VT</item>
+    </string-array>
+
+    <string-array name="mdnie_mode_entries">
+        <item>Dinamikus (Alapbeállítás)</item>
+        <item>Hagyományos</item>
+        <item>Természetes</item>
+        <item>Film</item>
+    </string-array>
+
+    <string-array name="mdnie_negative_entries">
+        <item>Normál</item>
+        <item>Fordított</item>
+    </string-array>
+
+    <string-array name="led_fade_entries">
+        <item>Villogás</item>
+        <item>Elhalványulás</item>
+    </string-array>
+
+    <string-array name="touchkey_timeout_entries">
+        <item>Soha</item>
+        <item>1 másodperc</item>
+        <item>2 másodperc</item>
+        <item>3 másodperc (Alapbeállítás)</item>
+        <item>4 másodperc</item>
+        <item>5 másodperc</item>
+        <item>6 másodperc</item>
+    </string-array>
+
+</resources>

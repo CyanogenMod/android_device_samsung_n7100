@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Настройки Galaxy Note 2</string>
+
+    <string name="category_haptic_title">Отклик</string>
+    <string name="vibrator_subcat_title">Вибрация</string>
+    <string name="vibrator_intensity_title_head">Интенсивность вибрации</string>
+    <string name="vibrator_intensity_summary_head">Установка интенсивности вибрации</string>
+
+    <string name="category_radio_title">Модем</string>
+    <string name="hspa_title_head">HSPA</string>
+    <string name="hspa_summary_head">Включить HSDPA/HSUPA</string>
+
+    <string name="category_screen_title">Экран</string>
+    <string name="mdnie_subcat_title">Цвета</string>
+    <string name="mdnie_scenario_title_head">Сценарий</string>
+    <string name="mdnie_scenario_summary_head">Установка сценария mDNIe</string>
+    <string name="mdnie_mode_title_head">Режим</string>
+    <string name="mdnie_mode_summary_head">Установка режима mDNIe</string>
+    <string name="mdnie_negative_title_head">Негатив</string>
+    <string name="mdnie_negative_summary_head">Вкл./выкл. инверсии цветов</string>
+
+    <string name="led_subcat_title">Индикатор событий</string>
+    <string name="led_fade_title_head">Режим</string>
+    <string name="led_fade_summary_head">Плавное затухание или резкое мигание</string>
+
+    <string name="touchkey_subcat_title">Сенсорные клавиши</string>
+    <string name="touchkey_light_title_head">Подсветка</string>
+    <string name="touchkey_light_summary_off">Подсветка включена</string>
+    <string name="touchkey_light_summary_on">Подсветка выключена</string>
+    <string name="touchkey_timeout_title_head">Тайм-аут подсветки</string>
+    <string name="touchkey_timeout_summary_head">Установка тайм-аута подсветки</string>
+
+</resources>
