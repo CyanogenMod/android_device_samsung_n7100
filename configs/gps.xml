@@ -9,7 +9,6 @@
        acNvStoDir="/data/gps/"
        FactoryTestFilePath="/data/"
 
-       Log="JAVA"
        acLogDirectory="/sdcard/gps/broadcom/storage"
 
        TISEnabled="true"
