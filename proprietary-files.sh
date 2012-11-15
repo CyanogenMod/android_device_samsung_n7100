@@ -37,7 +37,7 @@ adb pull /system/lib/libsensorhubservice.so ../../../vendor/$MANUFACTURER/$DEVIC
 adb pull /system/usr/idc/sec_e-pen.idc ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/system/usr/idc/sec_e-pen.idc
 adb pull /system/usr/keylayout/sec_e-pen.kl ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/system/usr/keylayout/sec_e-pen.kl
 adb pull /system/usr/keylayout/sec_touchkey.kl ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/system/usr/keylayout/sec_touchkey.kl
-adb pull /system/vendor/firmware/SlimISP_GK.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/system/vendor/firmware/SlimISP_GK.bin
+adb pull /system/vendor/firmware/SlimISP_GK.bin../../../vendor/$MANUFACTURER/$DEVICE/proprietary/system/vendor/firmware/SlimISP_GK.bin
 adb pull /system/vendor/firmware/SlimISP_ZK.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/system/vendor/firmware/SlimISP_ZK.bin
 adb pull /system/vendor/firmware/libpn544_fw.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/system/vendor/firmware/libpn544_fw.so
 
