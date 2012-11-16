@@ -24,9 +24,11 @@ mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb root
 sleep 3
 
+adb pull /system/bin/gpsd ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/system/bin/gpsd
 adb pull /system/bin/rild ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/system/bin/rild
 adb pull /system/bin/sensorservice ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/system/bin/sensorservice
 adb pull /system/bin/sensorhubservice ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/system/bin/sensorhubservice
+adb pull /system/lib/hw/gps.exynos4.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/system/lib/hw/gps.exynos4.so
 adb pull /system/lib/hw/vendor-camera.exynos4.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/system/lib/hw/camera.smdk4x12.so
 adb pull /system/lib/hw/sensors.smdk4x12.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/system/lib/hw/sensors.smdk4x12.so
 adb pull /system/lib/hw/sensorhubs.smdk4x12.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/system/lib/hw/sensorhubs.smdk4x12.so
@@ -60,6 +62,7 @@ adb pull /system/vendor/firmware/libpn544_fw.so ../../../vendor/$MANUFACTURER/$D
 LOCAL_PATH := vendor/samsung/n7100
 
 PRODUCT_COPY_FILES += \\
+    \$(LOCAL_PATH)/proprietary/system/bin/gpsd:system/bin/gpsd \\
     \$(LOCAL_PATH)/proprietary/system/bin/sensorservice:system/bin/sensorservice \\
     \$(LOCAL_PATH)/proprietary/system/bin/sensorhubservice:system/bin/sensorhubservice \\
     \$(LOCAL_PATH)/proprietary/system/bin/rild:system/bin/rild
@@ -71,6 +74,7 @@ PRODUCT_COPY_FILES += \\
     \$(LOCAL_PATH)/proprietary/system/lib/libsensorhubservice.so:system/lib/libsensorhubservice.so
 
 PRODUCT_COPY_FILES += \\
+    \$(LOCAL_PATH)/proprietary/system/lib/hw/gps.exynos4.so:system/lib/hw/gps.exynos4.so \\
     \$(LOCAL_PATH)/proprietary/system/lib/hw/camera.smdk4x12.so:system/lib/hw/vendor-camera.exynos4.so \\
     \$(LOCAL_PATH)/proprietary/system/lib/hw/sensors.smdk4x12.so:system/lib/hw/sensors.smdk4x12.so \\
     \$(LOCAL_PATH)/proprietary/system/lib/hw/sensorhubs.smdk4x12.so:system/lib/hw/sensorhubs.smdk4x12.so
