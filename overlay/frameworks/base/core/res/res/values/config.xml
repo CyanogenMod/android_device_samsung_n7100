@@ -114,5 +114,6 @@
 
     <!-- Boolean to enable stylus gestures -->
     <bool name="config_stylusGestures">true</bool>
-
+    <!-- Boolean to enable Stylus has switch -->
+    <bool name="config_stylusSwitch">true</bool>
 </resources>
