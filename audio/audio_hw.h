@@ -164,10 +164,12 @@ struct route_setting default_input_disable[] = {
 };
 
 struct route_setting headset_input[] = {
+    { .ctl_name = "MIXINL IN2L Switch", .intval = 0, },
+    { .ctl_name = "MIXINR IN1R Switch", .intval = 0, },
     { .ctl_name = "Headset Mic Switch", .intval = 1, },
-    { .ctl_name = "IN2L Volume", .intval = 18, },
-    { .ctl_name = "MIXINL IN2L Switch", .intval = 1, },
-    { .ctl_name = "MIXINL IN2L Volume", .intval = 0, },
+    { .ctl_name = "IN1L Volume", .intval = 18, },
+    { .ctl_name = "MIXINL IN1L Switch", .intval = 1, },
+    { .ctl_name = "MIXINL IN1L Volume", .intval = 0, },
     { .ctl_name = "AIF1ADC1 HPF Mode", .intval = 1, },
     { .ctl_name = "AIF1ADC1 HPF Switch", .intval = 1, },
     { .ctl_name = "AIF1ADC1 Volume", .intval = 96, },
