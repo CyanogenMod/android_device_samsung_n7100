@@ -19,6 +19,8 @@
 
 -include device/samsung/smdk4412-common/BoardCommonConfig.mk
 
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/i9300/bluetooth
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
