@@ -52,8 +52,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     GalaxyNote2Settings \
     libsecril-client \
-    libsecril-client-sap \
-    SamsungServiceMode
+    libsecril-client-sap
+
+#    SamsungServiceMode
 
 # NFC
 PRODUCT_PACKAGES += \
