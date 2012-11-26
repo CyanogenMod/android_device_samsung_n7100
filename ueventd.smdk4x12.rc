@@ -24,11 +24,11 @@
 /dev/v4l-subdev16         0660   system     system
 /dev/v4l-subdev17         0660   system     system
 
-/dev/video0               0666   system     m2m
+/dev/video0               0666   system     system
 /dev/video1               0666   system     camera
-/dev/video2               0666   system     m2m
-/dev/video3               0666   system     m2m
-/dev/video4               0666   system     m2m
+/dev/video2               0666   system     system
+/dev/video3               0666   system     system
+/dev/video4               0666   system     system
 /dev/video11              0666   system     system
 /dev/video12              0666   system     system
 /dev/video16              0666   system     system
