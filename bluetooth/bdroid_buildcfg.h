@@ -18,6 +18,6 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "GT-I9300"
+#define BTM_DEF_LOCAL_NAME   "GT-N7100"
 
 #endif
