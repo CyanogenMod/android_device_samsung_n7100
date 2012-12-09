@@ -2550,13 +2550,11 @@ static int adev_set_voice_volume(struct audio_hw_device *dev, float volume)
 {
     struct m0_audio_device *adev = (struct m0_audio_device *)dev;
 
-    pthread_mutex_lock(&adev->lock);
     adev->voice_volume = volume;
 
     if (adev->mode == AUDIO_MODE_IN_CALL)
         ril_set_call_volume(&adev->ril, SOUND_TYPE_VOICE, volume);
 
-    pthread_mutex_unlock(&adev->lock);
     return 0;
 }
 
