@@ -1,5 +1,4 @@
 import init.smdk4x12.usb.rc
-import init.bt.rc
 
 on init
     mkdir /mnt/shell/emulated 0700 shell shell
