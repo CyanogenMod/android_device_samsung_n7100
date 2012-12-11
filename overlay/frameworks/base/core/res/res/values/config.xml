@@ -95,7 +95,7 @@
     <bool name="config_disableMenuKeyInLockScreen">true</bool>
 
     <!-- Disable the home key unlock setting -->
-<!--    <bool name="config_disableHomeUnlockSetting">false</bool> -->
+    <bool name="config_disableHomeUnlockSetting">false</bool>
 
     <!-- Workaround for devices with broken keyboards -->
     <bool name="config_forceDisableHardwareKeyboard">true</bool>
