@@ -20,19 +20,19 @@
 <device name="Android">
   <!-- All values are in mAh except as noted -->
   <item name="none">0</item>
-  <item name="screen.on">49</item>
-  <item name="bluetooth.active">142</item>
+  <item name="screen.on">71</item>
+  <item name="bluetooth.active">17</item>
   <item name="bluetooth.on">0.3</item>
   <item name="bluetooth.at">35690</item>
-  <item name="screen.full">260</item>
-  <item name="wifi.on">4</item>
-  <item name="wifi.active">120</item>
-  <item name="wifi.scan">220</item>
-  <item name="dsp.audio">88</item>
-  <item name="dsp.video">88</item>
-  <item name="radio.active">185</item>
+  <item name="screen.full">380</item>
+  <item name="wifi.on">0.3</item>
+  <item name="wifi.active">96</item>
+  <item name="wifi.scan">70</item>
+  <item name="dsp.audio">44</item>
+  <item name="dsp.video">280</item>
+  <item name="radio.active">250</item>
   <!-- The current consumed by the radio when it is scanning for a signal -->
-  <item name="radio.scanning">88</item>
+  <item name="radio.scanning">82</item>
   <item name="gps.on">50</item>
   <!-- Current consumed by the radio at different signal strengths, when paging -->
   <array name="radio.on"> <!-- Strength 0 to BINS-1 -->
@@ -51,7 +51,7 @@
       <value>1600000</value>
   </array>
   <!-- Power consumption when CPU is idle -->
-  <item name="cpu.idle">1.4</item>
+  <item name="cpu.idle">4</item>
   <!-- Power consumption due to wake lock held -->
   <item name="cpu.awake">44</item>
   <!-- Power consumption at different speeds -->

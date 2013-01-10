@@ -96,6 +96,8 @@ struct m0_audio_device {
     int in_device;
     struct pcm *pcm_modem_dl;
     struct pcm *pcm_modem_ul;
+    struct pcm *pcm_bt_dl;
+    struct pcm *pcm_bt_ul;
     int in_call;
     float voice_volume;
     struct m0_stream_in *active_input;
@@ -351,7 +353,7 @@ void select_devices(struct m0_audio_device *adev)
 
 static int start_call(struct m0_audio_device *adev)
 {
-    ALOGE("Opening modem PCMs");
+    ALOGV("Opening modem PCMs");
     int bt_on;
 
     bt_on = adev->out_device & AUDIO_DEVICE_OUT_ALL_SCO;
@@ -359,9 +361,7 @@ static int start_call(struct m0_audio_device *adev)
 
     /* Open modem PCM channels */
     if (adev->pcm_modem_dl == NULL) {
-        if (bt_on)
-            adev->pcm_modem_dl = pcm_open(CARD_DEFAULT, PORT_BT, PCM_OUT, &pcm_config_vx);
-        else
+        ALOGD("Opening PCM modem DL stream");
             adev->pcm_modem_dl = pcm_open(CARD_DEFAULT, PORT_MODEM, PCM_OUT, &pcm_config_vx);
         if (!pcm_is_ready(adev->pcm_modem_dl)) {
             ALOGE("cannot open PCM modem DL stream: %s", pcm_get_error(adev->pcm_modem_dl));
@@ -370,6 +370,7 @@ static int start_call(struct m0_audio_device *adev)
     }
 
     if (adev->pcm_modem_ul == NULL) {
+        ALOGD("Opening PCM modem UL stream");
         adev->pcm_modem_ul = pcm_open(CARD_DEFAULT, PORT_MODEM, PCM_IN, &pcm_config_vx);
         if (!pcm_is_ready(adev->pcm_modem_ul)) {
             ALOGE("cannot open PCM modem UL stream: %s", pcm_get_error(adev->pcm_modem_ul));
@@ -377,34 +378,88 @@ static int start_call(struct m0_audio_device *adev)
         }
     }
 
+    ALOGD("Starting PCM modem streams");
     pcm_start(adev->pcm_modem_dl);
     pcm_start(adev->pcm_modem_ul);
+
+    /* Open bluetooth PCM channels */
+    if (bt_on) {
+        ALOGV("Opening bluetooth PCMs");
+
+        if (adev->pcm_bt_dl == NULL) {
+            ALOGD("Opening PCM bluetooth DL stream");
+            adev->pcm_bt_dl = pcm_open(CARD_DEFAULT, PORT_BT, PCM_OUT, &pcm_config_vx);
+            if (!pcm_is_ready(adev->pcm_bt_dl)) {
+                ALOGE("cannot open PCM bluetooth DL stream: %s", pcm_get_error(adev->pcm_bt_dl));
+                goto err_open_dl;
+            }
+        }
+
+        if (adev->pcm_bt_ul == NULL) {
+            ALOGD("Opening PCM bluetooth UL stream");
+            adev->pcm_bt_ul = pcm_open(CARD_DEFAULT, PORT_BT, PCM_IN, &pcm_config_vx);
+            if (!pcm_is_ready(adev->pcm_bt_ul)) {
+                ALOGE("cannot open PCM bluetooth UL stream: %s", pcm_get_error(adev->pcm_bt_ul));
+                goto err_open_ul;
+            }
+        }
+        ALOGD("Starting PCM bluetooth streams");
+        pcm_start(adev->pcm_bt_dl);
+        pcm_start(adev->pcm_bt_ul);
+    }
 
     return 0;
 
 err_open_ul:
     pcm_close(adev->pcm_modem_ul);
     adev->pcm_modem_ul = NULL;
+    pcm_close(adev->pcm_bt_ul);
+    adev->pcm_bt_ul = NULL;
 err_open_dl:
     pcm_close(adev->pcm_modem_dl);
     adev->pcm_modem_dl = NULL;
+    pcm_close(adev->pcm_bt_dl);
+    adev->pcm_bt_dl = NULL;
 
     return -ENOMEM;
 }
 
 static void end_call(struct m0_audio_device *adev)
 {
-    ALOGE("Closing modem PCMs");
-    pcm_stop(adev->pcm_modem_dl);
-    pcm_stop(adev->pcm_modem_ul);
-    pcm_close(adev->pcm_modem_dl);
-    pcm_close(adev->pcm_modem_ul);
+    int bt_on;
+    bt_on = adev->out_device & AUDIO_DEVICE_OUT_ALL_SCO;
+
+    if (adev->pcm_modem_dl != NULL) {
+        ALOGD("Stopping modem DL PCM");
+        pcm_stop(adev->pcm_modem_dl);
+        ALOGV("Closing modem DL PCM");
+        pcm_close(adev->pcm_modem_dl);
+    }
+    if (adev->pcm_modem_ul != NULL) {
+        ALOGD("Stopping modem UL PCM");
+        pcm_stop(adev->pcm_modem_ul);
+        ALOGV("Closing modem UL PCM");
+        pcm_close(adev->pcm_modem_ul);
+    }
     adev->pcm_modem_dl = NULL;
     adev->pcm_modem_ul = NULL;
 
-    /* re-enable +30db boost on mics */
-    mixer_ctl_set_value(adev->mixer_ctls.mixinl_in1l_volume, 0, 1);
-    mixer_ctl_set_value(adev->mixer_ctls.mixinl_in2l_volume, 0, 1);
+    if (bt_on) {
+        if (adev->pcm_bt_dl != NULL) {
+            ALOGD("Stopping bluetooth DL PCM");
+            pcm_stop(adev->pcm_bt_dl);
+            ALOGV("Closing bluetooth DL PCM");
+            pcm_close(adev->pcm_bt_dl);
+        }
+        if (adev->pcm_bt_ul != NULL) {
+            ALOGD("Stopping bluetooth UL PCM");
+            pcm_stop(adev->pcm_bt_ul);
+            ALOGV("Closing bluetooth UL PCM");
+            pcm_close(adev->pcm_bt_ul);
+        }
+    }
+    adev->pcm_bt_dl = NULL;
+    adev->pcm_bt_ul = NULL;
 }
 
 static void set_eq_filter(struct m0_audio_device *adev)
@@ -2615,6 +2670,13 @@ static int adev_open_input_stream(struct audio_hw_device *dev,
     struct m0_audio_device *ladev = (struct m0_audio_device *)dev;
     struct m0_stream_in *in;
     int ret;
+
+    /* Respond with a request for stereo if a different format is given. */
+    if (config->channel_mask != AUDIO_CHANNEL_IN_STEREO) {
+        config->channel_mask = AUDIO_CHANNEL_IN_STEREO;
+        return -EINVAL;
+    }
+
     int channel_count = popcount(config->channel_mask);
 
     *stream_in = NULL;
@@ -3008,6 +3070,8 @@ static int adev_open(const hw_module_t* module, const char* name,
 
     adev->pcm_modem_dl = NULL;
     adev->pcm_modem_ul = NULL;
+    adev->pcm_bt_dl = NULL;
+    adev->pcm_bt_ul = NULL;
     adev->voice_volume = 1.0f;
     adev->tty_mode = TTY_MODE_OFF;
     adev->bluetooth_nrec = true;
