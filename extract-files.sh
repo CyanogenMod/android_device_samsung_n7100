@@ -133,4 +133,4 @@ EOF
 
 EOF
 
-./../../../device/samsung/smdk4412-common/proprietary-files.sh
+./../../../device/samsung/smdk4412-common/extract-files.sh
