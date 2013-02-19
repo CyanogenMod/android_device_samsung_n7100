@@ -24,6 +24,10 @@
     <string name="led_fade_title_head">LED Fading</string>
     <string name="led_fade_summary_head">Enable LED smooth fading instead of sharp blinking.</string>
 
+    <string name="spen_subcat_title">S-Pen</string>
+    <string name="spen_power_save_title_head">S-Pen Power Saving Mode</string>
+    <string name="spen_power_save_summary_head">Disable stylus digitizer when S-Pen is in device</string>
+
     <string name="touchkey_subcat_title">Touchkeys</string>
     <string name="touchkey_light_title_head">Backlight</string>
     <string name="touchkey_light_summary_off">Enable backlight</string>

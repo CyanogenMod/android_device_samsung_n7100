@@ -44,6 +44,15 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+                android:title="@string/spen_subcat_title">
+    <!-- SPen power saving mode -->
+    <com.cyanogenmod.settings.device.SPenPowerSavingMode
+                android:key="spen_power_save"
+                android:title="@string/spen_power_save_title_head"
+                android:summary="@string/spen_power_save_summary_head" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
                 android:title="@string/touchkey_subcat_title">
     <!-- Touchkey backlight -->
     <CheckBoxPreference
