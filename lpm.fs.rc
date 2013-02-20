@@ -1,0 +1,8 @@
+on early-fs
+    mount ext4 /dev/block/mmcblk0p13 /system ro wait noatime
+    mount ext4 /dev/block/mmcblk0p16 /data wait nosuid nodev noatime discard,noauto_da_alloc,journal_async_commit
+
+	mkdir /data/log 0777
+	chmod 0666 /dev/log/radio
+	chmod 0666 /dev/log/main
+	chmod 0666 /dev/log/event
