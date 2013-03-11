@@ -1,0 +1,56 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string-array name="vibrator_intensity_entries">
+        <item>0%</item>
+        <item>25%</item>
+        <item>50% (Défaut)</item>
+        <item>75%</item>
+        <item>100%</item>
+    </string-array>
+
+    <string-array name="hspa_entries">
+        <item>UMTS seulement</item>
+        <item>HSDPA seulement</item>
+        <item>HSDPA + HSUPA</item>
+    </string-array>
+
+    <string-array name="mdnie_scenario_entries">
+        <item>CyanogenMod (Défaut)</item>
+        <item>UI</item>
+        <item>Vidéo</item>
+        <item>Vidéo chaude</item>
+        <item>Vidéo froide</item>
+        <item>Caméra</item>
+        <item>Navigation</item>
+        <item>Galerie</item>
+        <item>VT</item>
+    </string-array>
+
+    <string-array name="mdnie_mode_entries">
+        <item>Dynamique (Défaut)</item>
+        <item>Standard</item>
+        <item>Naturel</item>
+        <item>Cinéma</item>
+    </string-array>
+
+    <string-array name="mdnie_negative_entries">
+        <item>Normal</item>
+        <item>Inversé</item>
+    </string-array>
+
+    <string-array name="led_fade_entries">
+        <item>Clignotement</item>
+        <item>Estompage</item>
+    </string-array>
+
+    <string-array name="touchkey_timeout_entries">
+        <item>Jamais</item>
+        <item>1 seconde</item>
+        <item>2 secondes</item>
+        <item>3 secondes (Défaut)</item>
+        <item>4 secondes</item>
+        <item>5 secondes</item>
+        <item>6 secondes</item>
+    </string-array>
+
+</resources>
