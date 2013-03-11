@@ -1,0 +1,109 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string-array name="vibrator_intensity_entries">
+        <item>0%</item>
+        <item>25%</item>
+        <item>50% (Défaut)</item>
+        <item>75%</item>
+        <item>100%</item>
+    </string-array>
+
+    <string-array name="vibrator_intensity_entries_values" translatable="false">
+        <item>0</item>
+        <item>25</item>
+        <item>50</item>
+        <item>75</item>
+        <item>100</item>
+    </string-array>
+
+    <string-array name="hspa_entries">
+        <item>UMTS Seulement</item>
+        <item>HSDPA Seulement</item>
+        <item>HSDPA + HSUPA</item>
+    </string-array>
+
+    <string-array name="hspa_entries_values" translatable="false">
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+    </string-array>
+
+    <string-array name="mdnie_scenario_entries">
+        <item>CyanogenMod (Défaut)</item>
+        <item>UI</item>
+        <item>Vidéo</item>
+        <item>Vidéo Chaud</item>
+        <item>Video Froid</item>
+        <item>Caméra</item>
+        <item>Navigation</item>
+        <item>Gallerie</item>
+        <item>VT</item>
+    </string-array>
+
+    <string-array name="mdnie_scenario_entries_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <string-array name="mdnie_mode_entries">
+        <item>Dynamique (Défaut)</item>
+        <item>Standard</item>
+        <item>Naturel</item>
+        <item>Cinéma</item>
+    </string-array>
+
+    <string-array name="mdnie_mode_entries_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="mdnie_negative_entries">
+        <item>Normal</item>
+        <item>Inversé</item>
+    </string-array>
+
+    <string-array name="mdnie_negative_entries_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string-array name="led_fade_entries">
+        <item>Clignotement</item>
+        <item>Estompage</item>
+    </string-array>
+
+    <string-array name="led_fade_entries_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string-array name="touchkey_timeout_entries">
+        <item>Jamais</item>
+        <item>1 seconde</item>
+        <item>2 secondes</item>
+        <item>3 secondes (Défaut)</item>
+        <item>4 secondes</item>
+        <item>5 secondes</item>
+        <item>6 secondes</item>
+    </string-array>
+
+    <string-array name="touchkey_timeout_entries_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+</resources>
