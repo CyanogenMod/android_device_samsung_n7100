@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Paramètres du Galaxy Note 2</string>
+
+    <string name="category_haptic_title">Haptique</string>
+    <string name="vibrator_subcat_title">Vibreur</string>
+    <string name="vibrator_intensity_title_head">Intensité du vibreur</string>
+    <string name="vibrator_intensity_summary_head">Définir l\'intensité du vibreur</string>
+
+    <string name="category_radio_title">Radio</string>
+    <string name="hspa_title_head">HSPA</string>
+    <string name="hspa_summary_head">Activer HSDPA/HSUPA</string>
+
+    <string name="category_screen_title">Écran</string>
+    <string name="mdnie_subcat_title">Couleurs</string>
+    <string name="mdnie_scenario_title_head">Scénario</string>
+    <string name="mdnie_scenario_summary_head">Définir le scénario mDNIe</string>
+    <string name="mdnie_mode_title_head">Mode</string>
+    <string name="mdnie_mode_summary_head">Définir le mode mDNIe</string>
+    <string name="mdnie_negative_title_head">Mode négatif</string>
+    <string name="mdnie_negative_summary_head">Activer/Désactiver les couleurs inversées</string>
+
+    <string name="led_subcat_title">Notification par LED</string>
+    <string name="led_fade_title_head">Estompage de la LED</string>
+    <string name="led_fade_summary_head">Activer l\'estompage de la LED au lieu du clignotement.</string>
+
+    <string name="spen_subcat_title">S-Pen</string>
+    <string name="spen_power_save_title_head">Mode d\'économie du S-Pen</string>
+    <string name="spen_power_save_summary_head">Désactiver le numériseur de stylet lorsque le S-Pen est rangé.</string>
+
+    <string name="touchkey_subcat_title">Touches tactiles</string>
+    <string name="touchkey_light_title_head">Éclairage</string>
+    <string name="touchkey_light_summary_off">Activer l\'éclairage</string>
+    <string name="touchkey_light_summary_on">Désactiver l\'éclairage</string>
+    <string name="touchkey_timeout_title_head">Extinction de l\'éclairage</string>
+    <string name="touchkey_timeout_summary_head">Définir le temps d\'extinction de l\'éclairage</string>
+
+</resources>
