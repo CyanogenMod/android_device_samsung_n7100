@@ -7,8 +7,8 @@
         <item>100%</item>
     </string-array>
     <string-array name="hspa_entries">
-        <item>Solo UMTS</item>
-        <item>Solo HSDPA</item>
+        <item>Sólo UMTS</item>
+        <item>Sólo HSDPA</item>
         <item>HSDPA + HSUPA</item>
     </string-array>
     <string-array name="mdnie_scenario_entries">
