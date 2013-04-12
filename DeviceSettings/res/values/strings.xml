@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Galaxy Note 2 Settings</string>
+    <string name="app_name">Advanced settings</string>
 
     <string name="category_haptic_title">Haptic</string>
     <string name="vibrator_subcat_title">Vibrator</string>
