@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Config. Galaxy Note 2</string>
+    <string name="app_name">Configurações avançadas</string>
     <string name="category_haptic_title">Resposta Tátil</string>
     <string name="vibrator_subcat_title">Vibração</string>
     <string name="vibrator_intensity_title_head">Intensidade da Vibração</string>
@@ -25,4 +25,7 @@
     <string name="touchkey_timeout_title_head">Tempo limite da luz de fundo</string>
     <string name="touchkey_timeout_summary_head">Define o tempo limite para a luz de fundo</string>
     <string name="hspa_title_head">HSPA</string>
+    <string name="spen_subcat_title">S-Pen</string>
+    <string name="spen_power_save_title_head">Modo de economia de energia S-Pen</string>
+    <string name="spen_power_save_summary_head">Desativar digitalizador stylus quando o S-Pen estiver dentro do dispositivo</string>
 </resources>
