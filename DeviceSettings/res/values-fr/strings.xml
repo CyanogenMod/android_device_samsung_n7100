@@ -32,7 +32,7 @@
     <string name="mdnie_negative_summary_head">Activer/Désactiver les couleurs inversées</string>
     <string name="led_subcat_title">LED de notification</string>
     <string name="led_fade_title_head">LED progressive</string>
-    <string name="led_fade_summary_head">Activer l\'éclairage progressif à la place du clignotement</string>
+    <string name="led_fade_summary_head">Préférer l\'éclairage progressif au clignotement</string>
     <string name="spen_subcat_title">S-Pen</string>
     <string name="spen_power_save_title_head">Mode d\'économie du S-Pen</string>
     <string name="spen_power_save_summary_head">Désactiver le numériseur de stylet lorsque le S-Pen est rangé</string>
