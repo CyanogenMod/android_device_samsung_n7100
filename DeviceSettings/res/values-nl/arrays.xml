@@ -17,53 +17,53 @@
     <string-array name="vibrator_intensity_entries">
         <item>0%</item>
         <item>25%</item>
-        <item>50% (Padrão)</item>
+        <item>50% (standaard)</item>
         <item>75%</item>
         <item>100%</item>
     </string-array>
 
     <string-array name="hspa_entries">
-        <item>Somente UMTS</item>
-        <item>Somente HSDPA</item>
-        <item>HSDPA + HSUPA</item>
+        <item>Alleen UMTS</item>
+        <item>Alleen HSDPA</item>
+        <item>HSDPA &amp; HSUPA</item>
     </string-array>
 
     <string-array name="mdnie_scenario_entries">
-        <item>CyanogenMod (Padrão)</item>
-        <item>IU</item>
-        <item>Vídeo</item>
-        <item>Vídeo Quente</item>
-        <item>Vídeo Frio</item>
-        <item>Câmera</item>
-        <item>Navegação</item>
-        <item>Galeria</item>
+        <item>CyanogenMod (standaard)</item>
+        <item>Uiterlijk</item>
+        <item>Video</item>
+        <item>Video (warm)</item>
+        <item>Video (koud)</item>
+        <item>Camera</item>
+        <item>Navigatie</item>
+        <item>Galerij</item>
         <item>VT</item>
     </string-array>
 
     <string-array name="mdnie_mode_entries">
-        <item>Padrão</item>
-        <item>Dinâmico</item>
-        <item>Natural</item>
-        <item>Filme</item>
+        <item>Dynamisch (standaard)</item>
+        <item>Standaard</item>
+        <item>Natuurlijk</item>
+        <item>Film</item>
     </string-array>
 
     <string-array name="mdnie_negative_entries">
-        <item>Normal</item>
-        <item>Invertido</item>
+        <item>Normaal</item>
+        <item>Omgedraaid</item>
     </string-array>
 
     <string-array name="led_fade_entries">
-        <item>Piscando</item>
-        <item>Desvanecimento</item>
+        <item>Knipperen</item>
+        <item>Vervagen</item>
     </string-array>
 
     <string-array name="touchkey_timeout_entries">
-        <item>Nunca</item>
-        <item>1 segundo</item>
-        <item>2 segundos</item>
-        <item>3 segundos (Padrão)</item>
-        <item>4 segundos</item>
-        <item>5 segundos</item>
-        <item>6 segundos</item>
+        <item>Nooit</item>
+        <item>1 seconde</item>
+        <item>2 seconden</item>
+        <item>3 seconden (standaard)</item>
+        <item>4 seconden</item>
+        <item>5 seconden</item>
+        <item>6 seconden</item>
     </string-array>
 </resources>
