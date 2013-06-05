@@ -46,9 +46,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     GalaxyNote2Settings \
     libsecril-client \
-    libsecril-client-sap
-
-#    SamsungServiceMode
+    libsecril-client-sap \
+    SamsungServiceMode
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -82,8 +81,8 @@ $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=SamsungExynos4RIL \
     mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
-    ro.ril.hsxpa=1 \
-    ro.ril.gprsclass=10
+    ro.telephony.call_ring.multiple=false \
+    ro.telephony.call_ring.delay=3000
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
