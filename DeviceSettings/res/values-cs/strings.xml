@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012-2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="app_name">Pokročilé nastavení</string>
+
+    <string name="category_haptic_title">Hmatová odezva</string>
+    <string name="vibrator_subcat_title">Vibrace</string>
+    <string name="vibrator_intensity_title_head">Intenzita vibrací</string>
+    <string name="vibrator_intensity_summary_head">Nastavit intenzitu vibrací</string>
+
+    <string name="category_radio_title">Rádio</string>
+    <string name="hspa_title_head">HSPA</string>
+    <string name="hspa_summary_head">Povolit HSDPA/HSUPA</string>
+
+    <string name="category_screen_title">Obrazovka</string>
+    <string name="mdnie_subcat_title">Barvy</string>
+    <string name="mdnie_scenario_title_head">Scénář</string>
+    <string name="mdnie_scenario_summary_head">Nastavit scénář pro mDNIe</string>
+    <string name="mdnie_mode_title_head">Režim</string>
+    <string name="mdnie_mode_summary_head">Nastavi režim mDNIe</string>
+    <string name="mdnie_negative_title_head">Inverzní režim</string>
+    <string name="mdnie_negative_summary_head">Použít invertování barev</string>
+
+    <string name="led_subcat_title">LED upozornění</string>
+    <string name="led_fade_title_head">LED pohasínání</string>
+    <string name="led_fade_summary_head">Povolit pohasínání LED místo klasického blikání.</string>
+
+    <string name="spen_subcat_title">S-Pen</string>
+    <string name="spen_power_save_title_head">S-Pen úsporný režim</string>
+    <string name="spen_power_save_summary_head">Vypnout digitizér pro stylus pokud je S-Pen zasunuté v zařízení</string>
+
+    <string name="touchkey_subcat_title">Dotyková tlačítka</string>
+    <string name="touchkey_light_title_head">Podsvícení tlačítek</string>
+    <string name="touchkey_light_summary_off">Povolit podsvícení tlačítek</string>
+    <string name="touchkey_light_summary_on">Zakázat podsvícení tlačítek</string>
+    <string name="touchkey_timeout_title_head">Prodleva vypnutí podsvícení</string>
+    <string name="touchkey_timeout_summary_head">Zpoždění pro vypnutí podsvícení tlačítek</string>
+</resources>
