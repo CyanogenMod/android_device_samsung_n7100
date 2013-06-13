@@ -1,0 +1,3 @@
+<resources>
+    <integer name="default_cell_count_y">5</integer>
+</resources>
