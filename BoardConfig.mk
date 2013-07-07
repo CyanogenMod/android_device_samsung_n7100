@@ -19,6 +19,11 @@
 
 -include device/samsung/smdk4412-common/BoardCommonConfig.mk
 
+# RIL
+BOARD_PROVIDES_LIBRIL := true
+BOARD_MODEM_TYPE := xmm6262
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/n7100/include
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/n7100/bluetooth
 
