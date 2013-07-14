@@ -314,6 +314,7 @@ typedef struct {
     uint16_t mcc;
     uint16_t mnc;
     uint16_t lac;
+    uint16_t foo; // Samsung magic
     uint32_t cid;
 } AGpsRefLocationCellID;
 
