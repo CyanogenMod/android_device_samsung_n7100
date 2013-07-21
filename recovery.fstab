@@ -9,4 +9,4 @@
 /modem			emmc		/dev/block/mmcblk0p10
 
 /sdcard			datamedia   /dev/null
-/external_sd	vfat		/dev/block/mmcblk1p1 fstype2=ext4
+/external_sd	auto		/dev/block/mmcblk1p1	/dev/block/mmcblk1
