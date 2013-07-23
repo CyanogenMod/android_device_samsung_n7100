@@ -228,6 +228,11 @@ typedef uint16_t AGpsStatusValue;
  */
 #define AGPS_RIL_INTERFACE      "agps_ril"
 
+/**
+ * The GPS chipset can use Psc for AGPS.
+ */
+#define AGPS_USE_PSC
+
 /** Represents a location. */
 typedef struct {
     /** set to sizeof(GpsLocation) */
@@ -314,7 +319,9 @@ typedef struct {
     uint16_t mcc;
     uint16_t mnc;
     uint16_t lac;
-    uint16_t foo; // Samsung magic
+#ifdef AGPS_USE_PSC
+    uint16_t psc;
+#endif
     uint32_t cid;
 } AGpsRefLocationCellID;
 
