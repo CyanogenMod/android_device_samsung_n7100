@@ -123,8 +123,8 @@ on post-fs-data
 # Vibrator
     chmod 0660 /dev/tspdrv
     chown root shell /dev/tspdrv
-    chmod 0660 /sys/vibrator/pwm_val
-    chown system system /sys/vibrator/pwm_val
+    chmod 0660 /sys/class/timed_output/vibrator/pwm_value
+    chown system system /sys/class/timed_output/vibrator/pwm_value
 
 # LED
     chmod 0660 /sys/class/sec/led/led_fade
