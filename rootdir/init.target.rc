@@ -1,0 +1,64 @@
+on init
+    # Vibetonz
+    export VIBE_PIPE_PATH /dev/pipes
+    mkdir /dev/pipes 0771 shell shell
+
+on post-fs-data
+    chown radio system /sys/devices/platform/samsung-pd.5/s3c-fimc.2/range_mode
+    chmod 0660 /sys/devices/platform/samsung-pd.5/s3c-fimc.2/range_mode
+
+    # make param block device link for SysScope
+    symlink /dev/block/mmcblk0p7 /dev/block/param
+
+    # SensorHub
+    chown system radio /sys/class/sensors/ssp_sensor/enable
+    chown system radio /sys/class/sensors/ssp_sensor/mcu_rev
+    chown system radio /sys/class/sensors/ssp_sensor/mcu_name
+    chown system radio /sys/class/sensors/ssp_sensor/mcu_test
+    chown system radio /sys/class/sensors/ssp_sensor/mcu_reset
+    chown system radio /sys/class/sensors/ssp_sensor/mcu_update
+    chown system radio /sys/class/sensors/ssp_sensor/mcu_sleep_test
+    chown system radio /sys/class/sensors/ssp_sensor/ori_poll_delay
+    chown system radio /sys/class/sensors/ssp_sensor/mag_poll_delay
+
+on boot
+
+# icd
+service icd /system/bin/icd
+    class main
+    user system
+    group system log
+    onrestart exec icd_check
+
+# cbd
+service cpboot-daemon /sbin/cbd -d -p 10
+    class main
+    user root
+    group radio cache inet misc audio sdcard_rw log
+
+# sensorhub
+service sensorhubservice /system/bin/sensorhubservice
+    class main
+    user system
+    group input
+
+# GPS
+service gpsd /system/bin/gpsd -c /system/etc/gps.xml
+    class main
+    socket gps seqpacket 0660 gps system
+    user gps
+    group system inet sdcard_rw
+
+service dmb /system/bin/dmbserver
+    class main
+    user system
+    group radio inet misc audio camera graphics net_bt net_bt_admin sdcard_rw
+
+# TVout
+service TvoutService_C /system/bin/bintvoutservice
+    class main
+    user system
+    group graphics
+
+on property:ro.tvout.enable=false
+    stop TvoutService_C
