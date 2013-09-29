@@ -134,8 +134,6 @@ struct route_setting voicecall_default_disable[] = {
     { .ctl_name = "AIF2DAC Mux", .strval = "AIF3DACDAT", },
     { .ctl_name = "Main Mic Switch", .intval = 0, },
     { .ctl_name = "MIXINL IN2L Switch", .intval = 0, },
-    { .ctl_name = "Sub Mic Switch", .intval = 0, },
-    { .ctl_name = "MIXINR IN1R Switch", .intval = 0, },
     { .ctl_name = NULL, },
 };
 
