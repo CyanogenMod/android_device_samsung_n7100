@@ -16,6 +16,6 @@
 -->
 
 <resources xmlns:xliff="urnasis:names:tc:xliff:document:1.2 ">
-    <!-- Home button wake support -->
-    <bool name="config_show_homeWake">true</bool>
+    <!-- Home button wake support
+    <bool name="config_show_homeWake">true</bool> -->
 </resources>
