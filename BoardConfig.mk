@@ -40,3 +40,19 @@ TARGET_OTA_ASSERT_DEVICE := t03g,n7100,GT-N7100
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/n7100/rootdir/fstab.smdk4x12
 RECOVERY_FSTAB_VERSION := 2
+
+# Selinux
+BOARD_SEPOLICY_DIRS += \
+    device/samsung/n7100/selinux
+
+BOARD_SEPOLICY_UNION += \
+    device.te \
+    domain.te \
+    file.te \
+    file_contexts \
+    init.te \
+    mediaserver.te \
+    rild.te \
+    system.te \
+    ueventd.te \
+    wpa_supplicant.te
