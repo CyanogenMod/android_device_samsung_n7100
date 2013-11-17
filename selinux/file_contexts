@@ -10,7 +10,7 @@
 /dev/umts_ramdump0                      u:object_r:radio_device:s0
 /dev/umts_rfs0                          u:object_r:radio_device:s0
 
-/dev/block/mmcblk0p7                    u:object_r:efs_block_device:s0
+/dev/block/mmcblk0p10                   u:object_r:efs_block_device:s0
 
 # Camera
 /data/ISP_CV                            u:object_r:camera_data_file:s0
