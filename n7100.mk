@@ -53,6 +53,15 @@ PRODUCT_PACKAGES += \
     libsecril-client-sap \
     SamsungServiceMode
 
+# Additional apps
+PRODUCT_PACKAGES += \
+    Apollo \
+    Torch \
+    DashClock \
+    DSPManager \
+    libcyanogen-dsp \
+    audio_effects.conf
+
 # NFC
 PRODUCT_PACKAGES += \
     nfc.exynos4 \
