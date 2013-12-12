@@ -5,7 +5,11 @@
     },
     {
         "repository":  "android_device_samsung_smdk4412-common",
-        "target_path": "device/samsung/smdk4412-common",
+        "target_path": "device/samsung/smdk4412-common"
+    },
+    {
+        "repository":  "android_kernel_samsung_smdk4412",
+        "target_path": "kernel/samsung/smdk4412"
     },
     {
         "remote":      "cm",
@@ -15,7 +19,7 @@
     },
     {
         "repository":  "android_hardware_samsung",
-        "target_path": "hardware/samsung",
+        "target_path": "hardware/samsung"
     },
     {
         "remote":      "cm",
