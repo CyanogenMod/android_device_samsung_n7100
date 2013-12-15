@@ -56,7 +56,7 @@ PRODUCT_PACKAGES += \
 # Additional apps
 PRODUCT_PACKAGES += \
     Apollo \
-    Torch \
+    OpenDelta \
     DashClock \
     DSPManager \
     libcyanogen-dsp \
