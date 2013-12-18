@@ -16,6 +16,16 @@
 -->
 
 <resources xmlns:xliff="urnasis:names:tc:xliff:document:1.2 ">
-    <!-- Home button wake support
-    <bool name="config_show_homeWake">true</bool> -->
+    <!-- Home button wake support -->
+    <bool name="config_show_homeWake">true</bool>
+
+    <!-- Volume Rocker Wake Support. Some devices do not support (PMU) this.
+         Setting to false will disable Volume Rocker Wake support -->
+    <bool name="config_show_volumeRockerWake">true</bool>
+
+    <!-- Whether device has hardware buttons
+    <bool name="config_has_hardware_buttons">true</bool> -->
+
+    <!-- Button settings enabled or disabled
+    <bool name="config_device_has_button_settings" translatable="false">true</bool> -->
 </resources>
