@@ -69,7 +69,7 @@ int AccelSensor::enable(int32_t handle, int en) {
          if(err >= 0){
              mEnabled = flags;
              setInitialState();
-             setDelay(handle, 60); //Set an initial delay
+
              return 0;
          }
          return -1;

@@ -169,7 +169,6 @@ int AkmSensor::enable(int32_t handle, int en)
 
         err = sspEnable(LOGTAG, SSP_MAG, en);
         setInitialState();
-        setDelay(handle, 66667000); //set an initial delay after enabling
 
         ALOGE_IF(err, "Could not change sensor state (%s)", strerror(-err));
         if (!err) {
@@ -198,14 +197,6 @@ int AkmSensor::setDelay(int32_t handle, int64_t ns)
         return -EINVAL;
 
     fd = open("/sys/class/sensors/ssp_sensor/mag_poll_delay", O_RDWR);
-    if (fd >= 0) {
-        char buf[80];
-        sprintf(buf, "%lld", ns);
-        write(fd, buf, strlen(buf)+1);
-        close(fd);
-     }
-
-    fd = open("/sys/class/sensors/ssp_sensor/ori_poll_delay", O_RDWR);
     if (fd >= 0) {
         char buf[80];
         sprintf(buf, "%lld", ns);

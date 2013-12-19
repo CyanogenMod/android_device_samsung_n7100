@@ -95,7 +95,7 @@ int LightSensor::enable(int32_t handle, int en)
          if(err >= 0){
               mEnabled = flags;
               setInitialState();
-              setDelay(handle, 66667000); //set an initial delay after enabling
+
               return 0;
          }
          return -1;

@@ -85,7 +85,7 @@ int GyroSensor::enable(int32_t handle, int en) {
              mEnabled = flags;
              err = sspEnable(LOGTAG, SSP_GYRO, en);
              setInitialState();
-             setDelay(handle, 66667000); //set an initial delay after enabling
+
              return 0;
          }
          return -1;
