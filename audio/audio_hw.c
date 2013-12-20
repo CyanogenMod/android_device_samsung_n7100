@@ -2837,86 +2837,85 @@ static void adev_config_start(void *data, const XML_Char *elem,
     unsigned int i, j;
 
     for (i = 0; attr[i]; i += 2) {
-    if (strcmp(attr[i], "name") == 0)
-        name = attr[i + 1];
+        if (strcmp(attr[i], "name") == 0)
+            name = attr[i + 1];
 
-    if (strcmp(attr[i], "val") == 0)
-        val = attr[i + 1];
+        if (strcmp(attr[i], "val") == 0)
+            val = attr[i + 1];
     }
 
     if (strcmp(elem, "device") == 0) {
-    if (!name) {
-        ALOGE("Unnamed device\n");
-        return;
-    }
-
-    for (i = 0; i < sizeof(dev_names) / sizeof(dev_names[0]); i++) {
-        if (strcmp(dev_names[i].name, name) == 0) {
-        ALOGI("Allocating device %s\n", name);
-        dev_cfg = realloc(s->adev->dev_cfgs,
-                  (s->adev->num_dev_cfgs + 1)
-                  * sizeof(*dev_cfg));
-        if (!dev_cfg) {
-            ALOGE("Unable to allocate dev_cfg\n");
+        if (!name) {
+            ALOGE("Unnamed device\n");
             return;
         }
 
-        s->dev = &dev_cfg[s->adev->num_dev_cfgs];
-        memset(s->dev, 0, sizeof(*s->dev));
-        s->dev->mask = dev_names[i].mask;
+        for (i = 0; i < sizeof(dev_names) / sizeof(dev_names[0]); i++) {
+            if (strcmp(dev_names[i].name, name) == 0) {
+            ALOGI("Allocating device %s\n", name);
+            dev_cfg = realloc(s->adev->dev_cfgs,
+                      (s->adev->num_dev_cfgs + 1)
+                      * sizeof(*dev_cfg));
+            if (!dev_cfg) {
+                ALOGE("Unable to allocate dev_cfg\n");
+                return;
+            }
 
-        s->adev->dev_cfgs = dev_cfg;
-        s->adev->num_dev_cfgs++;
+            s->dev = &dev_cfg[s->adev->num_dev_cfgs];
+            memset(s->dev, 0, sizeof(*s->dev));
+            s->dev->mask = dev_names[i].mask;
+
+            s->adev->dev_cfgs = dev_cfg;
+            s->adev->num_dev_cfgs++;
+            }
         }
-    }
-
     } else if (strcmp(elem, "path") == 0) {
-    if (s->path_len)
-        ALOGW("Nested paths\n");
+        if (s->path_len)
+            ALOGW("Nested paths\n");
 
-    /* If this a path for a device it must have a role */
-    if (s->dev) {
-        /* Need to refactor a bit... */
-        if (strcmp(name, "on") == 0) {
-        s->on = true;
-        } else if (strcmp(name, "off") == 0) {
-        s->on = false;
-        } else {
-        ALOGW("Unknown path name %s\n", name);
+        /* If this a path for a device it must have a role */
+        if (s->dev) {
+            /* Need to refactor a bit... */
+            if (strcmp(name, "on") == 0) {
+            s->on = true;
+            } else if (strcmp(name, "off") == 0) {
+            s->on = false;
+            } else {
+            ALOGW("Unknown path name %s\n", name);
+            }
         }
-    }
 
     } else if (strcmp(elem, "ctl") == 0) {
-    struct route_setting *r;
+        struct route_setting *r;
 
-    if (!name) {
-        ALOGE("Unnamed control\n");
-        return;
-    }
+        if (!name) {
+            ALOGE("Unnamed control\n");
+            return;
+        }
 
-    if (!val) {
-        ALOGE("No value specified for %s\n", name);
-        return;
-    }
+        if (!val) {
+            ALOGE("No value specified for %s\n", name);
+            return;
+        }
 
-    ALOGV("Parsing control %s => %s\n", name, val);
+        ALOGV("Parsing control %s => %s\n", name, val);
 
-    r = realloc(s->path, sizeof(*r) * (s->path_len + 1));
-    if (!r) {
-        ALOGE("Out of memory handling %s => %s\n", name, val);
-        return;
-    }
+        r = realloc(s->path, sizeof(*r) * (s->path_len + 1));
+        if (!r) {
+            ALOGE("Out of memory handling %s => %s\n", name, val);
+            return;
+        }
 
-    r[s->path_len].ctl_name = strdup(name);
-    r[s->path_len].strval = NULL;
+        r[s->path_len].ctl_name = strdup(name);
+        r[s->path_len].strval = NULL;
 
-    /* This can be fooled but it'll do */
-    r[s->path_len].intval = atoi(val);
-    if (!r[s->path_len].intval && strcmp(val, "0") != 0)
-        r[s->path_len].strval = strdup(val);
+        /* This can be fooled but it'll do */
+        r[s->path_len].intval = atoi(val);
+        if (!r[s->path_len].intval && strcmp(val, "0") != 0)
+            r[s->path_len].strval = strdup(val);
 
-    s->path = r;
-    s->path_len++;
+        s->path = r;
+        s->path_len++;
     }
 }
 
