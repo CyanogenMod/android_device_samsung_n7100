@@ -83,11 +83,6 @@ AkmSensor::AkmSensor()
     mPendingEvents[MagneticField].type = SENSOR_TYPE_MAGNETIC_FIELD;
     mPendingEvents[MagneticField].magnetic.status = SENSOR_STATUS_ACCURACY_HIGH;
 
-    mPendingEvents[Orientation  ].version = sizeof(sensors_event_t);
-    mPendingEvents[Orientation  ].sensor = ID_O;
-    mPendingEvents[Orientation  ].type = SENSOR_TYPE_ORIENTATION;
-    mPendingEvents[Orientation  ].orientation.status = SENSOR_STATUS_ACCURACY_HIGH;
-
     // read the actual value of all sensors if they're enabled already
     struct input_absinfo absinfo;
     short flags = 0;
@@ -103,25 +98,6 @@ AkmSensor::AkmSensor()
             mPendingEvents[MagneticField].magnetic.z = absinfo.value * CONVERT_M_Z;
         }
     }
-
-    if (akm_is_sensor_enabled(SENSOR_TYPE_ORIENTATION))  {
-        mEnabled |= 1<<Orientation;
-        if (!ioctl(data_fd, EVIOCGABS(EVENT_TYPE_YAW), &absinfo)) {
-            mPendingEvents[Orientation].orientation.azimuth = absinfo.value;
-        }
-        if (!ioctl(data_fd, EVIOCGABS(EVENT_TYPE_PITCH), &absinfo)) {
-            mPendingEvents[Orientation].orientation.pitch = absinfo.value;
-        }
-        if (!ioctl(data_fd, EVIOCGABS(EVENT_TYPE_ROLL), &absinfo)) {
-            mPendingEvents[Orientation].orientation.roll = -absinfo.value;
-        }
-        if (!ioctl(data_fd, EVIOCGABS(EVENT_TYPE_ORIENT_STATUS), &absinfo)) {
-            mPendingEvents[Orientation].orientation.status = uint8_t(absinfo.value & SENSOR_STATE_MASK);
-        }
-    }
-
-    // disable temperature sensor, since it is not supported
-    akm_disable_sensor(SENSOR_TYPE_TEMPERATURE);
 }
 
 AkmSensor::~AkmSensor()
@@ -130,7 +106,6 @@ AkmSensor::~AkmSensor()
         unsigned ref = ::dlclose(mLibAKM);
     }
 }
-
 
 int AkmSensor::setInitialState()
 {
@@ -158,7 +133,6 @@ int AkmSensor::enable(int32_t handle, int en)
 
         switch (what) {
             case MagneticField: sensor_type = SENSOR_TYPE_MAGNETIC_FIELD; break;
-            case Orientation:   sensor_type = SENSOR_TYPE_ORIENTATION;  break;
         }
         short flags = newState;
         if (en){
@@ -190,13 +164,20 @@ int AkmSensor::setDelay(int32_t handle, int64_t ns)
 
     switch (handle) {
         case ID_M: sensor_type = SENSOR_TYPE_MAGNETIC_FIELD; break;
-        case ID_O: sensor_type = SENSOR_TYPE_ORIENTATION; break;
     }
 
     if (sensor_type == 0)
         return -EINVAL;
 
     fd = open("/sys/class/sensors/ssp_sensor/mag_poll_delay", O_RDWR);
+    if (fd >= 0) {
+        char buf[80];
+        sprintf(buf, "%lld", ns);
+        write(fd, buf, strlen(buf)+1);
+        close(fd);
+     }
+
+    fd = open("/sys/class/sensors/ssp_sensor/ori_poll_delay", O_RDWR);
     if (fd >= 0) {
         char buf[80];
         sprintf(buf, "%lld", ns);

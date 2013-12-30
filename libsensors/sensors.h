@@ -40,8 +40,6 @@ __BEGIN_DECLS
 #define ID_P  (4)
 #define ID_GY (5)
 #define ID_PR (6)
-#define ID_LA (7)
-#define ID_GR (8)
 
 #define SSP_ACCEL  (1)
 #define SSP_GYRO   (2)
@@ -67,11 +65,6 @@ __BEGIN_DECLS
 #define EVENT_TYPE_ACCEL_X          REL_X  //1
 #define EVENT_TYPE_ACCEL_Y          REL_Y  //0
 #define EVENT_TYPE_ACCEL_Z          REL_Z  //2
-//#define EVENT_TYPE_ACCEL_STATUS     ABS_WHEEL //8
-
-#define EVENT_TYPE_GRAVITY_X          ABS_X  //1
-#define EVENT_TYPE_GRAVITY_Y          ABS_Y  //0
-#define EVENT_TYPE_GRAVITY_Z          ABS_Z  //2
 
 #define EVENT_TYPE_YAW              ABS_RX  //3
 #define EVENT_TYPE_PITCH            ABS_RY  //4
@@ -85,7 +78,7 @@ __BEGIN_DECLS
 #define EVENT_TYPE_TEMPERATURE      ABS_THROTTLE
 #define EVENT_TYPE_STEP_COUNT       ABS_GAS
 #define EVENT_TYPE_PROXIMITY        ABS_DISTANCE
-#define EVENT_TYPE_LIGHT            REL_HWHEEL
+#define EVENT_TYPE_LIGHT            REL_MISC
 
 #define EVENT_TYPE_GYRO_X           REL_RX
 #define EVENT_TYPE_GYRO_Y           REL_RY
@@ -105,7 +98,7 @@ __BEGIN_DECLS
 
 // conversion of magnetic data to uT units
 #define CONVERT_M                   (1.0f/16.0f)
-#define CONVERT_M_X                 (-CONVERT_M)
+#define CONVERT_M_X                 (CONVERT_M)
 #define CONVERT_M_Y                 (CONVERT_M)
 #define CONVERT_M_Z                 (CONVERT_M)
 

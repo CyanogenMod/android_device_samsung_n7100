@@ -52,8 +52,6 @@
 #define SENSORS_LIGHT            (1<<ID_L)
 #define SENSORS_PROXIMITY        (1<<ID_P)
 #define SENSORS_GYROSCOPE        (1<<ID_GY)
-#define SENSORS_LINEAR_ACCEL     (1<<ID_LA)
-#define SENSORS_GRAVITY          (1<<ID_GR)
 #define SENSORY_PRESSURE         (1<<ID_PR)
 
 #define SENSORS_ACCELERATION_HANDLE     0
@@ -63,8 +61,6 @@
 #define SENSORS_PROXIMITY_HANDLE        4
 #define SENSORS_GYROSCOPE_HANDLE        5
 #define SENSORS_PRESSURE_HANDLE         6
-#define SENSORS_LINEAR_ACCEL_HANDLE     7
-#define SENSORS_GRAVITY_HANDLE          8
 
 #define AKM_FTRACE 0
 #define AKM_DEBUG 0
@@ -173,7 +169,6 @@ private:
                 return accel;
             case ID_M:
             case ID_O:
-            case ID_GR:
                 return akm;
             case ID_P:
                 return proximity;
