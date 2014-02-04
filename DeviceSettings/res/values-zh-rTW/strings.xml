@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">高級設置</string>
+
+    <string name="category_haptic_title">振動</string>
+    <string name="vibrator_subcat_title">振動器</string>
+    <string name="vibrator_intensity_title_head">振動器強度</string>
+    <string name="vibrator_intensity_summary_head">設置振動器強度</string>
+
+    <string name="category_radio_title">無線電</string>
+    <string name="hspa_title_head">HSPA</string>
+    <string name="hspa_summary_head">啟用 HSDPA/HSUPA</string>
+
+    <string name="category_screen_title">螢幕</string>
+    <string name="mdnie_subcat_title">顏色</string>
+    <string name="mdnie_scenario_title_head">場景</string>
+    <string name="mdnie_scenario_summary_head">設置 mDNIe 場景</string>
+    <string name="mdnie_mode_title_head">模式</string>
+    <string name="mdnie_mode_summary_head">設置 mDNIe 模式</string>
+    <string name="mdnie_negative_title_head">負極模式</string>
+    <string name="mdnie_negative_summary_head">啟用/禁用反色</string>
+
+    <string name="led_subcat_title">LED 指示燈</string>
+    <string name="led_fade_title_head">LED 淡出</string>
+    <string name="led_fade_summary_head">啟用後 LED 指示燈將會產生淡出效果而替代閃爍效果。</string>
+
+    <string name="spen_subcat_title">S-Pen</string>
+    <string name="spen_power_save_title_head">S-Pen 節能模式</string>
+    <string name="spen_power_save_summary_head">S-Pen 插在設備內時禁用觸控筆數位轉換器</string>
+
+    <string name="touchkey_subcat_title">觸摸鍵</string>
+    <string name="touchkey_light_title_head">背光燈</string>
+    <string name="touchkey_light_summary_off">啟用背光燈</string>
+    <string name="touchkey_light_summary_on">禁用背光燈</string>
+    <string name="touchkey_timeout_title_head">背光燈超時</string>
+    <string name="touchkey_timeout_summary_head">設置背光燈超時時間</string>
+</resources>
