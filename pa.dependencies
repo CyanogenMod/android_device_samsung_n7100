@@ -4,12 +4,15 @@
         "target_path": "device/samsung/n7100"
     },
     {
-        "repository":  "android_device_samsung_smdk4412-common",
-        "target_path": "device/samsung/smdk4412-common"
+        "remote":      "github",
+        "repository":  "tilaksidduram/android_device_samsung_smdk4412-common",
+        "target_path": "device/samsung/smdk4412-common",
+        "revision":    "kitkat"
     },
     {
-        "repository":  "android_kernel_samsung_smdk4412",
-        "target_path": "kernel/samsung/smdk4412"
+        "repository":  "omnirom/android_kernel_samsung_smdk4412",
+        "target_path": "kernel/samsung/smdk4412",
+        "revision":    "android-4.4"
     },
     {
         "remote":      "cm",
