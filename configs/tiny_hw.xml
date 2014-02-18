@@ -157,7 +157,7 @@ We are able to have most of our routing static so do that
         <ctl name="DAC1 Volume" val="96"/>
         <ctl name="Left Output Mixer DAC Volume" val="7"/>
         <ctl name="Right Output Mixer DAC Volume" val="7"/>
-        <ctl name="Output Volume" val="55"/>
+        <ctl name="Output Volume" val="57"/>
         <ctl name="Earpiece Volume" val="1"/>
     </path>
     <path name="off">
@@ -267,6 +267,18 @@ We are able to have most of our routing static so do that
         <ctl name="SPKR DAC1 Volume" val="1"/>
         <ctl name="Speaker Mixer Volume" val="0"/>
         <ctl name="Speaker Boost Volume" val="0"/>
+    </path>
+</device>
+<device name="aux-digital">
+    <path name="on">
+        <ctl name="LINEOUT1N Switch" val="1"/>
+        <ctl name="LINEOUT1P Switch" val="1"/>
+        <ctl name="HDMI Switch" val="1"/>
+    </path>
+    <path name="off">
+        <ctl name="LINEOUT1N Switch" val="0"/>
+        <ctl name="LINEOUT1P Switch" val="0"/>
+        <ctl name="HDMI Switch" val="0"/>
     </path>
 </device>
 <device name="builtin-mic">
