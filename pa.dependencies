@@ -10,9 +10,8 @@
         "revision":    "kitkat"
     },
     {
-        "repository":  "omnirom/android_kernel_samsung_smdk4412",
-        "target_path": "kernel/samsung/smdk4412",
-        "revision":    "android-4.4"
+        "repository":  "android_kernel_samsung_smdk4412",
+        "target_path": "kernel/samsung/smdk4412"
     },
     {
         "remote":      "cm",
