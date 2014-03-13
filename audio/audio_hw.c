@@ -586,6 +586,7 @@ static void select_mode(struct m0_audio_device *adev)
              adev->in_call, adev->mode);
         if (adev->in_call) {
             adev->in_call = 0;
+            ril_set_call_clock_sync(&adev->ril, SOUND_CLOCK_STOP);
             end_call(adev);
             force_all_standby(adev);
             select_output_device(adev);
