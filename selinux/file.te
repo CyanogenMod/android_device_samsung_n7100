@@ -1,5 +1,4 @@
 type firmware_mfc, file_type;
 type firmware_camera, file_type;
 
-type camera_data_file, file_type, data_file_type;
 type sensors_data_file, file_type, data_file_type;
