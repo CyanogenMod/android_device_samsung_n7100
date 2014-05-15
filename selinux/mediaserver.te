@@ -1,3 +1,8 @@
 allow mediaserver { firmware_camera }:file r_file_perms;
 allow mediaserver firmware_camera:dir r_dir_perms;
 allow mediaserver camera_data_file:file rw_file_perms;
+allow mediaserver volume_data_file:file create_file_perms;
+allow mediaserver volume_data_file:dir create_dir_perms;
+
+# Bluetooth audio
+allow mediaserver bluetooth:unix_stream_socket { connectto };

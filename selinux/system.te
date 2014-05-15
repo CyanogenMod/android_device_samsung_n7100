@@ -1,7 +1,8 @@
-#allow system uinput_device:chr_file { read ioctl write open };
+allow system input_device:chr_file { read ioctl write open };
 allow system sensors_device:chr_file { read open };
 allow system sensors_data_file:file r_file_perms;
 allow system wpa_socket:unix_dgram_socket sendto;
+allow system_app volume_data_file:file { read write open getattr };
 
 allow system sysfs:file { read open write };
 allow system self:capability { sys_module };
