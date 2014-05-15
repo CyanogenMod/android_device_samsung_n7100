@@ -1,5 +1,5 @@
 #
-# system.prop for smdk4x12
+# system.prop for n7100
 #
 
 dalvik.vm.dexopt-data-only=1

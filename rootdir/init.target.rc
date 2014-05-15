@@ -10,18 +10,7 @@ on post-fs-data
     # make param block device link for SysScope
     symlink /dev/block/mmcblk0p7 /dev/block/param
 
-    # SensorHub
-    chown system radio /sys/class/sensors/ssp_sensor/enable
-    chown system radio /sys/class/sensors/ssp_sensor/mcu_rev
-    chown system radio /sys/class/sensors/ssp_sensor/mcu_name
-    chown system radio /sys/class/sensors/ssp_sensor/mcu_test
-    chown system radio /sys/class/sensors/ssp_sensor/mcu_reset
-    chown system radio /sys/class/sensors/ssp_sensor/mcu_update
-    chown system radio /sys/class/sensors/ssp_sensor/mcu_sleep_test
-    chown system radio /sys/class/sensors/ssp_sensor/ori_poll_delay
-    chown system radio /sys/class/sensors/ssp_sensor/mag_poll_delay
-
-# Restorecon
+    # Restorecon
     restorecon /efs/nv_data.bin
     restorecon /efs/nv_data.bin.md5
     restorecon /efs/.nv_core.bak
@@ -37,6 +26,17 @@ on post-fs-data
     restorecon /efs/imei/mps_code.dat
     restorecon /efs/gyro_cal_data
     restorecon /efs/wifi/.mac.info
+
+    # SensorHub
+    chown system radio /sys/class/sensors/ssp_sensor/enable
+    chown system radio /sys/class/sensors/ssp_sensor/mcu_rev
+    chown system radio /sys/class/sensors/ssp_sensor/mcu_name
+    chown system radio /sys/class/sensors/ssp_sensor/mcu_test
+    chown system radio /sys/class/sensors/ssp_sensor/mcu_reset
+    chown system radio /sys/class/sensors/ssp_sensor/mcu_update
+    chown system radio /sys/class/sensors/ssp_sensor/mcu_sleep_test
+    chown system radio /sys/class/sensors/ssp_sensor/ori_poll_delay
+    chown system radio /sys/class/sensors/ssp_sensor/mag_poll_delay
 
 on boot
 
@@ -70,12 +70,3 @@ service dmb /system/bin/dmbserver
     class main
     user system
     group radio inet misc audio camera graphics net_bt net_bt_admin sdcard_rw
-
-# TVout
-service TvoutService_C /system/bin/bintvoutservice
-    class main
-    user system
-    group graphics
-
-on property:ro.tvout.enable=false
-    stop TvoutService_C
