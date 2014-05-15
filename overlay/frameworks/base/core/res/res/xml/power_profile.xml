@@ -18,52 +18,42 @@
 -->
 
 <device name="Android">
-  <!-- All values are in mAh except as noted -->
-  <item name="none">0</item>
-  <item name="screen.on">71</item>
-  <item name="bluetooth.active">17</item>
-  <item name="bluetooth.on">0.3</item>
-  <item name="bluetooth.at">35690</item>
-  <item name="screen.full">380</item>
-  <item name="wifi.on">0.3</item>
-  <item name="wifi.active">96</item>
-  <item name="wifi.scan">70</item>
-  <item name="dsp.audio">44</item>
-  <item name="dsp.video">280</item>
-  <item name="radio.active">250</item>
-  <!-- The current consumed by the radio when it is scanning for a signal -->
-  <item name="radio.scanning">82</item>
-  <item name="gps.on">50</item>
-  <!-- Current consumed by the radio at different signal strengths, when paging -->
-  <array name="radio.on"> <!-- Strength 0 to BINS-1 -->
-      <value>3.4</value>
-      <value>3.4</value>
-  </array>
-  <!-- Different CPU speeds as reported in
-       /sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state -->
-  <array name="cpu.speeds">
-      <value>200000</value>
-      <value>500000</value>
-      <value>800000</value>
-      <value>1000000</value>
-      <value>1200000</value>
-      <value>1400000</value>
-      <value>1600000</value>
-  </array>
-  <!-- Power consumption when CPU is idle -->
-  <item name="cpu.idle">4</item>
-  <!-- Power consumption due to wake lock held -->
-  <item name="cpu.awake">44</item>
-  <!-- Power consumption at different speeds -->
-  <array name="cpu.active">
-      <value>55.4</value>
-      <value>82.1</value>
-      <value>113.7</value>
-      <value>140.0</value>
-      <value>170.0</value>
-      <value>200.0</value>
-      <value>230.0</value>
-  </array>
-  <!-- This is the battery capacity in mAh -->
-  <item name="battery.capacity">3100</item>
+    <!-- All values are in mAh except as noted -->
+    <item name="none">0</item>
+    <item name="screen.on">172</item>
+    <item name="bluetooth.active">17</item>
+    <item name="bluetooth.on">0.3</item>
+    <item name="screen.full">155</item>
+    <item name="wifi.on">0.3</item>
+    <item name="wifi.active">96</item>
+    <item name="wifi.scan">70</item>
+    <item name="dsp.audio">50</item>
+    <item name="dsp.video">270</item>
+    <item name="radio.active">250</item>
+    <item name="radio.scanning">82</item>
+    <item name="gps.on">1</item>
+    <array name="radio.on">
+        <value>3.4</value>
+        <value>3.4</value>
+    </array>
+    <array name="cpu.speeds">
+        <value>1600000</value>
+        <value>1400000</value>
+        <value>1200000</value>
+        <value>1000000</value>
+        <value>800000</value>
+        <value>400000</value>
+        <value>200000</value>
+    </array>
+    <item name="cpu.idle">2.0</item>
+    <array name="cpu.active">
+        <value>770</value>
+        <value>582</value>
+        <value>440</value>
+        <value>345</value>
+        <value>260</value>
+        <value>170</value>
+        <value>125</value>
+    </array>
+    <item name="battery.capacity">3100</item>
 </device>
