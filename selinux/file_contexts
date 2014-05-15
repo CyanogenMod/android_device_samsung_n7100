@@ -3,17 +3,13 @@
 /dev/ump                                u:object_r:mali_device:s0
 /dev/fimg2d                             u:object_r:mali_device:s0
 
-# NFC
-#/dev/pn544                             u:object_r:nfc_device:s0
-
 # RIL
 /dev/umts_boot0                         u:object_r:radio_device:s0
-#/dev/umts_boot1                        u:object_r:radio_device:s0
+/dev/umts_csd                           u:object_r:radio_device:s0
 /dev/umts_ipc0                          u:object_r:radio_device:s0
+/dev/umts_loopback0                     u:object_r:radio_device:s0
 /dev/umts_ramdump0                      u:object_r:radio_device:s0
 /dev/umts_rfs0                          u:object_r:radio_device:s0
-/dev/umts_csd                           u:object_r:radio_device:s0
-/dev/umts_loopback0                     u:object_r:radio_device:s0
 /dev/umts_router                        u:object_r:radio_device:s0
 
 /dev/block/mmcblk0p10                   u:object_r:efs_block_device:s0
@@ -41,3 +37,6 @@
 /system/vendor/firmware(/.*)?           u:object_r:firmware_camera:s0
 /system/vendor/firmware/mfc_fw.bin      u:object_r:firmware_mfc:s0
 /data/cfw(/.*)?                         u:object_r:firmware_camera:s0
+
+# Vibrator
+/dev/tspdrv                             u:object_r:input_device:s0
