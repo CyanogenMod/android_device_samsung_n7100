@@ -10,6 +10,9 @@ We are able to have most of our routing static so do that
     <ctl name="AIF2ADCL Source" val="0"/>
     <ctl name="AIF2ADCR Source" val="1"/>
 
+    <!-- AIF1->DAC1 -->
+    <ctl name="DAC1 Switch" val="1"/>
+
     <!-- general -->
     <ctl name="IN1L ZC Switch" val="0"/>
     <ctl name="IN1R ZC Switch" val="0"/>
@@ -127,7 +130,7 @@ We are able to have most of our routing static so do that
         <ctl name="SPKL DAC1 Volume" val="1"/>
         <ctl name="SPKR DAC1 Volume" val="1"/>
         <ctl name="Speaker Mixer Volume" val="3"/>
-        <ctl name="Speaker Boost Volume" val="4"/>
+        <ctl name="Speaker Boost Volume" val="6"/>
         <ctl name="Speaker Volume" val="57"/>
         <ctl name="AIF1DAC1 EQ Switch" val="1"/>
         <ctl name="AIF1DAC1 EQ1 Volume" val="9"/>
@@ -157,7 +160,7 @@ We are able to have most of our routing static so do that
         <ctl name="DAC1 Volume" val="96"/>
         <ctl name="Left Output Mixer DAC Volume" val="7"/>
         <ctl name="Right Output Mixer DAC Volume" val="7"/>
-        <ctl name="Output Volume" val="55"/>
+        <ctl name="Output Volume" val="57"/>
         <ctl name="Earpiece Volume" val="1"/>
     </path>
     <path name="off">
@@ -218,64 +221,63 @@ We are able to have most of our routing static so do that
         <ctl name="AIF2DAC2R Mixer AIF1.1 Switch" val="0"/>
     </path>
 </device>
-<device name="analog-dock">
+<device name="analogue-dock">
     <path name="on">
         <ctl name="LINEOUT2N Switch" val="1"/>
         <ctl name="LINEOUT2P Switch" val="1"/>
         <ctl name="LINEOUT2N Mixer Left Output Switch" val="1"/>
-        <ctl name="LINEOUT2N Mixer Right Output Switch" val="1"/>
+        <ctl name="LINEOUT2N Mixer Right Output Switch" val="0"/>
         <ctl name="LINEOUT2P Mixer Right Output Switch" val="1"/>
         <ctl name="LINE Switch" val="1"/>
-        <ctl name="AIF1DAC1 Volume" val="96"/>
-        <ctl name="AIF1 Boost Volume" val="0"/>
-        <ctl name="DAC1 Volume" val="96"/>
+        <ctl name="LineoutSwitch Mode" val="1"/>
         <ctl name="Left Output Mixer DAC Volume" val="7"/>
         <ctl name="Right Output Mixer DAC Volume" val="7"/>
-        <ctl name="Output Volume" val="55"/>
-        <ctl name="LINEOUT2 Volume" val="1"/>
-        <ctl name="LineoutSwitch Mode" val="1"/>
     </path>
     <path name="off">
+        <ctl name="LineoutSwitch Mode" val="0"/>
         <ctl name="LINEOUT2N Switch" val="0"/>
         <ctl name="LINEOUT2P Switch" val="0"/>
         <ctl name="LINE Switch" val="0"/>
-        <ctl name="AIF1DAC1 Volume" val="96"/>
-        <ctl name="AIF1 Boost Volume" val="0"/>
-        <ctl name="DAC1 Volume" val="96"/>
-        <ctl name="Left Output Mixer DAC Volume" val="7"/>
-        <ctl name="Right Output Mixer DAC Volume" val="7"/>
-        <ctl name="Output Volume" val="57"/>
-        <ctl name="LINEOUT2 Volume" val="1"/>
-        <ctl name="LineoutSwitch Mode" val="0"/>
     </path>
 </device>
 <device name="digital-dock">
     <path name="on">
+        <ctl name="LINEOUT2N Switch" val="1"/>
+        <ctl name="LINEOUT2P Switch" val="1"/>
+        <ctl name="LINEOUT2N Mixer Left Output Switch" val="1"/>
+        <ctl name="LINEOUT2N Mixer Right Output Switch" val="0"/>
+        <ctl name="LINEOUT2P Mixer Right Output Switch" val="1"/>
+        <ctl name="LINE Switch" val="1"/>
+        <ctl name="LineoutSwitch Mode" val="1"/>
+        <ctl name="Left Output Mixer DAC Volume" val="7"/>
+        <ctl name="Right Output Mixer DAC Volume" val="7"/>
+    </path>
+    <path name="off">
+        <ctl name="LineoutSwitch Mode" val="0"/>
+        <ctl name="LINEOUT2N Switch" val="0"/>
+        <ctl name="LINEOUT2P Switch" val="0"/>
+        <ctl name="LINE Switch" val="0"/>
+    </path>
+</device>
+<device name="aux-digital">
+    <path name="on">
         <ctl name="LINEOUT1N Switch" val="1"/>
         <ctl name="LINEOUT1P Switch" val="1"/>
         <ctl name="HDMI Switch" val="1"/>
-        <ctl name="AIF1DAC1 Volume" val="96"/>
     </path>
     <path name="off">
         <ctl name="LINEOUT1N Switch" val="0"/>
         <ctl name="LINEOUT1P Switch" val="0"/>
         <ctl name="HDMI Switch" val="0"/>
-        <ctl name="AIF1DAC1 Volume" val="96"/>
-        <ctl name="AIF1 Boost Volume" val="0"/>
-        <ctl name="DAC1 Volume" val="96"/>
-        <ctl name="SPKL DAC1 Volume" val="1"/>
-        <ctl name="SPKR DAC1 Volume" val="1"/>
-        <ctl name="Speaker Mixer Volume" val="0"/>
-        <ctl name="Speaker Boost Volume" val="0"/>
     </path>
 </device>
 <device name="builtin-mic">
     <path name="on">
         <ctl name="Main Mic Switch" val="1"/>
         <ctl name="MainMicBias Mode" val="1"/>
-        <ctl name="IN2L Volume" val="28"/>
+        <ctl name="IN2L Volume" val="26"/>
         <ctl name="MIXINL IN2L Switch" val="1"/>
-        <ctl name="MIXINL IN2L Volume" val="1"/>
+        <ctl name="MIXINL IN2L Volume" val="0"/>
         <ctl name="AIF1ADCL Source" val="0"/>
         <ctl name="AIF1ADC1 HPF Mode" val="0"/>
         <ctl name="AIF1ADC1 HPF Switch" val="1"/>
@@ -293,9 +295,9 @@ We are able to have most of our routing static so do that
     <path name="on">
         <ctl name="Sub Mic Switch" val="1"/>
         <ctl name="SubMicBias Mode" val="1"/>
-        <ctl name="IN1R Volume" val="25"/>
+        <ctl name="IN1R Volume" val="27"/>
         <ctl name="MIXINR IN1R Switch" val="1"/>
-        <ctl name="MIXINR IN1R Volume" val="1"/>
+        <ctl name="MIXINR IN1R Volume" val="0"/>
         <ctl name="AIF1ADCR Source" val="1"/>
         <ctl name="AIF1ADC1 HPF Mode" val="1"/>
         <ctl name="AIF1ADC1 HPF Switch" val="1"/>
