@@ -57,3 +57,9 @@ TARGET_OTA_ASSERT_DEVICE := t03g,n7100,GT-N7100
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/n7100/rootdir/fstab.smdk4x12
 RECOVERY_FSTAB_VERSION := 2
+
+# Compatibility with pre-kitkat Sensor HALs
+SENSORS_NEED_SETRATE_ON_ENABLE := true
+
+# Camera wrapper
+TARGET_PROVIDES_CAMERA_HAL := true
