@@ -144,49 +144,35 @@ int SensorBase::sspEnable(const char* sensorname, int sensorvalue, int en)
     int oldvalue = 0;
     int reset = 0;
     int newvalue;
-    int fd;
+    int fd, err;
+    char buf[10];
 
     sspfile = fopen(SSP_DEVICE_ENABLE, "r+");
     fscanf(sspfile, "%d", &oldvalue);
     fclose(sspfile);
 
 //Accel sensor is first on and last off, if we are disabling it
-// assume the screen is off, disable all sensors and zero everything out
-// to keep enable file in sync.
+// assume the screen is off and zero everything out.
     if(sensorvalue == SSP_ACCEL && !en) {
+        newvalue = '\0';
         //ALOGD("SensorBase: Resetting sensors");
-        for(int i; i < 6; i++){
-	  newvalue = oldvalue - ssp_sensors[i];
-	  //ALOGD("SensorBase: newvalue: %i ",newvalue);
-	  sspWrite(newvalue);
-	}
-        sspWrite('\0');
-	return 0;
     } else if(en) {
         newvalue = oldvalue + sensorvalue;
     } else {
         newvalue = oldvalue - sensorvalue;
     }
-    //ALOGI("%s: name: %s sensor: %i old value: %i  new value: %i ", __func__, sensorname, sensorvalue, oldvalue, newvalue);
-    sspWrite(newvalue);
-    return 0;
-}
 
-int SensorBase::sspWrite(int sensorvalue)
-{
-    char buf[10];
-    int fd, ret, err;
+    sprintf(buf, "%d", newvalue);
 
-    sprintf(buf, "%d", sensorvalue);
     fd = open(SSP_DEVICE_ENABLE, O_RDWR);
     if (fd >= 0) {
         err = write(fd, buf, sizeof(buf));
-	ret = 0;
+        //ALOGI("%s: sensor: %i old value: %i  new value: %i ", sensorname, sensorvalue, oldvalue, newvalue);
+        close(fd);
+        return 0;
     } else {
-        ALOGI("%s: error writing to file", __func__);
-	ret = -1;
+        ALOGI("%s: error writing to file", sensorname);
+        close(fd);
+        return -1;
     }
-    
-    close(fd);
-    return ret;
 }
