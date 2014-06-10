@@ -62,10 +62,6 @@ PRODUCT_PACKAGES += \
     libcyanogen-dsp \
     audio_effects.conf
 
-# Sensors
-PRODUCT_PACKAGES += \
-    sensors.smdk4x12
-
 # NFC
 PRODUCT_PACKAGES += \
     nfc.exynos4 \
