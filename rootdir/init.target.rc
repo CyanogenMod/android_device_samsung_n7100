@@ -10,6 +10,23 @@ on post-fs-data
     # make param block device link for SysScope
     symlink /dev/block/mmcblk0p7 /dev/block/param
 
+    # Restorecon
+    restorecon /efs/nv_data.bin
+    restorecon /efs/nv_data.bin.md5
+    restorecon /efs/.nv_core.bak
+    restorecon /efs/.nv_core.bak.md5
+    restorecon /efs/.nv_data.bak
+    restorecon /efs/.nv_data.bak.md5
+    restorecon /efs/.nv_state
+    restorecon /efs/bluetooth/bt_addr
+    restorecon /efs/FactoryApp/factorymode
+    restorecon /efs/FactoryApp/hw_ver
+    restorecon /efs/FactoryApp/keystr
+    restorecon /efs/FactoryApp/serial_no
+    restorecon /efs/imei/mps_code.dat
+    restorecon /efs/gyro_cal_data
+    restorecon /efs/wifi/.mac.info
+
     # SensorHub
     chown system radio /sys/class/sensors/ssp_sensor/enable
     chown system radio /sys/class/sensors/ssp_sensor/mcu_rev
