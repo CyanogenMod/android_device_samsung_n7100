@@ -70,12 +70,3 @@ service dmb /system/bin/dmbserver
     class main
     user system
     group radio inet misc audio camera graphics net_bt net_bt_admin sdcard_rw
-
-# TVout
-service TvoutService_C /system/bin/bintvoutservice
-    class main
-    user system
-    group graphics
-
-on property:ro.tvout.enable=false
-    stop TvoutService_C
