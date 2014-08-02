@@ -88,7 +88,6 @@ struct m0_audio_device {
     struct m0_dev_cfg *dev_cfgs;
     int num_dev_cfgs;
     struct mixer *mixer;
-    struct mixer_ctls mixer_ctls;
     audio_mode_t mode;
     int active_out_device;
     int out_device;
@@ -103,7 +102,6 @@ struct m0_audio_device {
     struct m0_stream_in *active_input;
     struct m0_stream_out *outputs[OUTPUT_TOTAL];
     bool mic_mute;
-    int tty_mode;
     struct echo_reference_itfe *echo_reference;
     bool bluetooth_nrec;
     int wb_amr;
@@ -532,15 +530,6 @@ static void set_incall_device(struct m0_audio_device *adev)
     ril_set_call_audio_path(&adev->ril, device_type);
 }
 
-static void set_input_volumes(struct m0_audio_device *adev, int main_mic_on,
-                              int headset_mic_on, int sub_mic_on)
-{
-}
-
-static void set_output_volumes(struct m0_audio_device *adev, bool tty_volume)
-{
-}
-
 static void force_all_standby(struct m0_audio_device *adev)
 {
     struct m0_stream_in *in;
@@ -598,8 +587,7 @@ static void select_mode(struct m0_audio_device *adev)
             adev->in_call = 0;
             ril_set_call_clock_sync(&adev->ril, SOUND_CLOCK_STOP);
             end_call(adev);
-            //Force Input Standby
-            adev->in_device = AUDIO_DEVICE_NONE;
+            force_all_standby(adev);
 
             ALOGD("%s: set voicecall route: voicecall_default_disable", __func__);
             set_bigroute_by_array(adev->mixer, voicecall_default_disable, 1);
@@ -610,8 +598,9 @@ static void select_mode(struct m0_audio_device *adev)
             ALOGD("%s: set voicecall route: bt_disable", __func__);
             set_bigroute_by_array(adev->mixer, bt_disable, 1);
 
-            force_all_standby(adev);
             select_output_device(adev);
+            //Force Input Standby
+            adev->in_device = AUDIO_DEVICE_NONE;
             select_input_device(adev);
         }
     }
@@ -624,7 +613,6 @@ static void select_output_device(struct m0_audio_device *adev)
     int speaker_on;
     int earpiece_on;
     int bt_on;
-    bool tty_volume = false;
     unsigned int channel;
 
     headset_on = adev->out_device & AUDIO_DEVICE_OUT_WIRED_HEADSET;
@@ -671,29 +659,6 @@ static void select_output_device(struct m0_audio_device *adev)
     set_eq_filter(adev);
 
     if (adev->mode == AUDIO_MODE_IN_CALL) {
-        if (!bt_on) {
-            /* force tx path according to TTY mode when in call */
-            switch(adev->tty_mode) {
-                case TTY_MODE_FULL:
-                case TTY_MODE_HCO:
-                    /* tx path from headset mic */
-                    headphone_on = 0;
-                    headset_on = 1;
-                    speaker_on = 0;
-                    earpiece_on = 0;
-                    break;
-                case TTY_MODE_VCO:
-                    /* tx path from device sub mic */
-                    headphone_on = 0;
-                    headset_on = 0;
-                    speaker_on = 1;
-                    earpiece_on = 0;
-                    break;
-                case TTY_MODE_OFF:
-                default:
-                    break;
-            }
-        }
 
         if (headset_on || headphone_on || speaker_on || earpiece_on) {
             ALOGD("%s: set voicecall route: voicecall_default", __func__);
@@ -2559,30 +2524,6 @@ static int adev_set_parameters(struct audio_hw_device *dev, const char *kvpairs)
     int ret;
 
     parms = str_parms_create_str(kvpairs);
-    ret = str_parms_get_str(parms, AUDIO_PARAMETER_KEY_TTY_MODE, value, sizeof(value));
-    if (ret >= 0) {
-        int tty_mode;
-
-        if (strcmp(value, AUDIO_PARAMETER_VALUE_TTY_OFF) == 0)
-            tty_mode = TTY_MODE_OFF;
-        else if (strcmp(value, AUDIO_PARAMETER_VALUE_TTY_VCO) == 0)
-            tty_mode = TTY_MODE_VCO;
-        else if (strcmp(value, AUDIO_PARAMETER_VALUE_TTY_HCO) == 0)
-            tty_mode = TTY_MODE_HCO;
-        else if (strcmp(value, AUDIO_PARAMETER_VALUE_TTY_FULL) == 0)
-            tty_mode = TTY_MODE_FULL;
-        else
-            return -EINVAL;
-
-        pthread_mutex_lock(&adev->lock);
-        if (tty_mode != adev->tty_mode) {
-            adev->tty_mode = tty_mode;
-            if (adev->mode == AUDIO_MODE_IN_CALL)
-                select_output_device(adev);
-        }
-        pthread_mutex_unlock(&adev->lock);
-    }
-
     ret = str_parms_get_str(parms, AUDIO_PARAMETER_KEY_BT_NREC, value, sizeof(value));
     if (ret >= 0) {
         if (strcmp(value, AUDIO_PARAMETER_VALUE_ON) == 0)
@@ -2604,13 +2545,9 @@ static int adev_set_parameters(struct audio_hw_device *dev, const char *kvpairs)
         if (strcmp(value, "on") == 0) {
             ALOGE("%s: enabling two mic control", __func__);
             ril_set_two_mic_control(&adev->ril, AUDIENCE, TWO_MIC_SOLUTION_ON);
-            /* sub mic */
-            set_bigroute_by_array(adev->mixer, noise_suppression, 1);
         } else {
             ALOGE("%s: disabling two mic control", __func__);
             ril_set_two_mic_control(&adev->ril, AUDIENCE, TWO_MIC_SOLUTION_OFF);
-            /* sub mic */
-            set_bigroute_by_array(adev->mixer, noise_suppression_disable, 1);
         }
     }
 
@@ -2854,85 +2791,86 @@ static void adev_config_start(void *data, const XML_Char *elem,
     unsigned int i, j;
 
     for (i = 0; attr[i]; i += 2) {
-        if (strcmp(attr[i], "name") == 0)
-            name = attr[i + 1];
+    if (strcmp(attr[i], "name") == 0)
+        name = attr[i + 1];
 
-        if (strcmp(attr[i], "val") == 0)
-            val = attr[i + 1];
+    if (strcmp(attr[i], "val") == 0)
+        val = attr[i + 1];
     }
 
     if (strcmp(elem, "device") == 0) {
-        if (!name) {
-            ALOGE("Unnamed device\n");
+    if (!name) {
+        ALOGE("Unnamed device\n");
+        return;
+    }
+
+    for (i = 0; i < sizeof(dev_names) / sizeof(dev_names[0]); i++) {
+        if (strcmp(dev_names[i].name, name) == 0) {
+        ALOGI("Allocating device %s\n", name);
+        dev_cfg = realloc(s->adev->dev_cfgs,
+                  (s->adev->num_dev_cfgs + 1)
+                  * sizeof(*dev_cfg));
+        if (!dev_cfg) {
+            ALOGE("Unable to allocate dev_cfg\n");
             return;
         }
 
-        for (i = 0; i < sizeof(dev_names) / sizeof(dev_names[0]); i++) {
-            if (strcmp(dev_names[i].name, name) == 0) {
-            ALOGI("Allocating device %s\n", name);
-            dev_cfg = realloc(s->adev->dev_cfgs,
-                      (s->adev->num_dev_cfgs + 1)
-                      * sizeof(*dev_cfg));
-            if (!dev_cfg) {
-                ALOGE("Unable to allocate dev_cfg\n");
-                return;
-            }
+        s->dev = &dev_cfg[s->adev->num_dev_cfgs];
+        memset(s->dev, 0, sizeof(*s->dev));
+        s->dev->mask = dev_names[i].mask;
 
-            s->dev = &dev_cfg[s->adev->num_dev_cfgs];
-            memset(s->dev, 0, sizeof(*s->dev));
-            s->dev->mask = dev_names[i].mask;
-
-            s->adev->dev_cfgs = dev_cfg;
-            s->adev->num_dev_cfgs++;
-            }
+        s->adev->dev_cfgs = dev_cfg;
+        s->adev->num_dev_cfgs++;
         }
+    }
+
     } else if (strcmp(elem, "path") == 0) {
-        if (s->path_len)
-            ALOGW("Nested paths\n");
+    if (s->path_len)
+        ALOGW("Nested paths\n");
 
-        /* If this a path for a device it must have a role */
-        if (s->dev) {
-            /* Need to refactor a bit... */
-            if (strcmp(name, "on") == 0) {
-            s->on = true;
-            } else if (strcmp(name, "off") == 0) {
-            s->on = false;
-            } else {
-            ALOGW("Unknown path name %s\n", name);
-            }
+    /* If this a path for a device it must have a role */
+    if (s->dev) {
+        /* Need to refactor a bit... */
+        if (strcmp(name, "on") == 0) {
+        s->on = true;
+        } else if (strcmp(name, "off") == 0) {
+        s->on = false;
+        } else {
+        ALOGW("Unknown path name %s\n", name);
         }
+    }
 
     } else if (strcmp(elem, "ctl") == 0) {
-        struct route_setting *r;
+    struct route_setting *r;
 
-        if (!name) {
-            ALOGE("Unnamed control\n");
-            return;
-        }
+    if (!name) {
+        ALOGE("Unnamed control\n");
+        return;
+    }
 
-        if (!val) {
-            ALOGE("No value specified for %s\n", name);
-            return;
-        }
+    if (!val) {
+        ALOGE("No value specified for %s\n", name);
+        return;
+    }
 
-        ALOGV("Parsing control %s => %s\n", name, val);
+    ALOGV("Parsing control %s => %s\n", name, val);
 
-        r = realloc(s->path, sizeof(*r) * (s->path_len + 1));
-        if (!r) {
-            ALOGE("Out of memory handling %s => %s\n", name, val);
-            return;
-        }
+    r = realloc(s->path, sizeof(*r) * (s->path_len + 1));
+    if (!r) {
+        ALOGE("Out of memory handling %s => %s\n", name, val);
+        return;
+    }
 
-        r[s->path_len].ctl_name = strdup(name);
-        r[s->path_len].strval = NULL;
+    r[s->path_len].ctl_name = strdup(name);
+    r[s->path_len].strval = NULL;
 
-        /* This can be fooled but it'll do */
-        r[s->path_len].intval = atoi(val);
-        if (!r[s->path_len].intval && strcmp(val, "0") != 0)
-            r[s->path_len].strval = strdup(val);
+    /* This can be fooled but it'll do */
+    r[s->path_len].intval = atoi(val);
+    if (!r[s->path_len].intval && strcmp(val, "0") != 0)
+        r[s->path_len].strval = strdup(val);
 
-        s->path = r;
-        s->path_len++;
+    s->path = r;
+    s->path_len++;
     }
 }
 
@@ -3081,10 +3019,6 @@ static int adev_open(const hw_module_t* module, const char* name,
         return -EINVAL;
     }
 
-    /* +30db boost for mics */
-    adev->mixer_ctls.mixinl_in1l_volume = mixer_get_ctl_by_name(adev->mixer, "MIXINL IN1L Volume");
-    adev->mixer_ctls.mixinl_in2l_volume = mixer_get_ctl_by_name(adev->mixer, "MIXINL IN2L Volume");
-
     ret = adev_config_parse(adev);
     if (ret != 0)
         goto err_mixer;
@@ -3101,7 +3035,6 @@ static int adev_open(const hw_module_t* module, const char* name,
     adev->pcm_bt_dl = NULL;
     adev->pcm_bt_ul = NULL;
     adev->voice_volume = 1.0f;
-    adev->tty_mode = TTY_MODE_OFF;
     adev->bluetooth_nrec = true;
     adev->wb_amr = 0;
 
