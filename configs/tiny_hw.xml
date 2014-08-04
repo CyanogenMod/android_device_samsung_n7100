@@ -261,7 +261,7 @@ We are able to have most of our routing static so do that
     <path name="on">
         <ctl name="Main Mic Switch" val="1"/>
         <ctl name="MainMicBias Mode" val="1"/>
-        <ctl name="IN2L Volume" val="13"/>
+        <ctl name="IN2L Volume" val="28"/>
         <ctl name="MIXINL IN2L Switch" val="1"/>
         <ctl name="MIXINL IN2L Volume" val="1"/>
         <ctl name="AIF1ADCL Source" val="Left"/>
