@@ -134,6 +134,7 @@ struct route_setting default_input[] = {
     { .ctl_name = "AIF2ADCL Source", .intval = 0, },
     { .ctl_name = "MIXINL IN2L Switch", .intval = 1, },
     { .ctl_name = "Sub Mic Switch", .intval = 1, },
+    { .ctl_name = "SubMicBias Mode", .intval = 1, },
     { .ctl_name = "AIF1ADCR Source", .intval = 1, },
     { .ctl_name = "AIF2ADCR Source", .intval = 1, },
     { .ctl_name = "MIXINR IN1R Switch", .intval = 1, },
@@ -149,8 +150,10 @@ struct route_setting default_input[] = {
 
 struct route_setting default_input_disable[] = {
     { .ctl_name = "Main Mic Switch", .intval = 0, },
+    { .ctl_name = "MainMicBias Mode", .intval = 0, },
     { .ctl_name = "MIXINL IN2L Switch", .intval = 0, },
     { .ctl_name = "Sub Mic Switch", .intval = 0, },
+    { .ctl_name = "SubMicBias Mode", .intval = 0, },
     { .ctl_name = "MIXINR IN1R Switch", .intval = 0, },
     { .ctl_name = "AIF2DACL Source", .intval = 0, },
     { .ctl_name = "AIF2DACR Source", .intval = 1, },
