@@ -2545,9 +2545,13 @@ static int adev_set_parameters(struct audio_hw_device *dev, const char *kvpairs)
         if (strcmp(value, "true") == 0) {
             ALOGE("%s: enabling two mic control", __func__);
             ril_set_two_mic_control(&adev->ril, AUDIENCE, TWO_MIC_SOLUTION_ON);
+            /* sub mic */
+            set_bigroute_by_array(adev->mixer, noise_suppression, 1);
         } else {
             ALOGE("%s: disabling two mic control", __func__);
             ril_set_two_mic_control(&adev->ril, AUDIENCE, TWO_MIC_SOLUTION_OFF);
+            /* sub mic */
+            set_bigroute_by_array(adev->mixer, noise_suppression_disable, 1);
         }
     }
 
