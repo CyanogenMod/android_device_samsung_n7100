@@ -7,7 +7,7 @@
         "remote":      "github",
         "repository":  "tilaksidduram/android_device_samsung_smdk4412-common",
         "target_path": "device/samsung/smdk4412-common",
-        "revision":    "kitkat"
+        "revision":    "lollipop"
     },
     {
         "repository":  "android_kernel_samsung_smdk4412",
@@ -17,24 +17,30 @@
         "remote":      "cm",
         "repository":  "CyanogenMod/android_packages_apps_SamsungServiceMode",
         "target_path": "packages/apps/SamsungServiceMode",
-        "revision":    "cm-11.0"
+        "revision":    "cm-12.0"
     },
     {
         "remote":      "cm",
         "repository":  "CyanogenMod/android_hardware_samsung",
         "target_path": "hardware/samsung",
-        "revision":    "cm-11.0"
+        "revision":    "cm-12.0"
     },
     {
         "remote":      "cm",
         "repository":  "CyanogenMod/android_packages_apps_Apollo",
         "target_path": "packages/apps/Apollo",
-        "revision":    "cm-11.0"
+        "revision":    "cm-12.0"
     },
     {
-        "remote":      "blobs",
-        "repository":  "proprietary_vendor_samsung",
+        "remote":      "github",
+        "repository":  "CrazyWeasel/proprietary_vendor_samsung",
         "target_path": "vendor/samsung",
-        "revision":    "cm-11.0"
+        "revision":    "n-2.0"
+    },
+    {
+        "remote":      "github",
+        "repository":  "Fortune-OS/android_hardware_samsung_slsi_exynos4",
+        "target_path": "hardware/samsung_slsi/exynos4",
+        "revision": "android-5.0"
     }
 ]

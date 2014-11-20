@@ -57,7 +57,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Apollo \
     OpenDelta \
-    DashClock \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf
