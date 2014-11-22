@@ -90,6 +90,8 @@ PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     Stk
 
+$(call inherit-product, vendor/pa/configs/nfc_enhanced.mk)
+
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=SamsungExynos4RIL \
