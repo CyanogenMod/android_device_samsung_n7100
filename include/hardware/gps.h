@@ -108,25 +108,47 @@ typedef uint16_t GpsLocationFlags;
 #define GPS_CAPABILITY_SINGLE_SHOT      0x0000008
 /** GPS supports on demand time injection */
 #define GPS_CAPABILITY_ON_DEMAND_TIME   0x0000010
+/** GPS supports Geofencing  */
+#define GPS_CAPABILITY_GEOFENCING       0x0000020
+/** GPS supports Measurements */
+#define GPS_CAPABILITY_MEASUREMENTS     0x0000040
+/** GPS supports Navigation Messages */
+#define GPS_CAPABILITY_NAV_MESSAGES     0x0000080
 
 /** Flags used to specify which aiding data to delete
     when calling delete_aiding_data(). */
-typedef uint16_t GpsAidingData;
+typedef uint32_t GpsAidingData;
 // IMPORTANT: Note that the following values must match
 // constants in GpsLocationProvider.java.
-#define GPS_DELETE_EPHEMERIS        0x0001
-#define GPS_DELETE_ALMANAC          0x0002
-#define GPS_DELETE_POSITION         0x0004
-#define GPS_DELETE_TIME             0x0008
-#define GPS_DELETE_IONO             0x0010
-#define GPS_DELETE_UTC              0x0020
-#define GPS_DELETE_HEALTH           0x0040
-#define GPS_DELETE_SVDIR            0x0080
-#define GPS_DELETE_SVSTEER          0x0100
-#define GPS_DELETE_SADATA           0x0200
-#define GPS_DELETE_RTI              0x0400
-#define GPS_DELETE_CELLDB_INFO      0x8000
-#define GPS_DELETE_ALL              0xFFFF
+#define GPS_DELETE_EPHEMERIS                     0x00000001
+#define GPS_DELETE_ALMANAC                       0x00000002
+#define GPS_DELETE_POSITION                      0x00000004
+#define GPS_DELETE_TIME                          0x00000008
+#define GPS_DELETE_IONO                          0x00000010
+#define GPS_DELETE_UTC                           0x00000020
+#define GPS_DELETE_HEALTH                        0x00000040
+#define GPS_DELETE_SVDIR                         0x00000080
+#define GPS_DELETE_SVSTEER                       0x00000100
+#define GPS_DELETE_SADATA                        0x00000200
+#define GPS_DELETE_RTI                           0x00000400
+#define GPS_DELETE_CELLDB_INFO                   0x00000800
+#define GPS_DELETE_ALMANAC_CORR                  0x00001000
+#define GPS_DELETE_FREQ_BIAS_EST                 0x00002000
+#define GLO_DELETE_EPHEMERIS                     0x00004000
+#define GLO_DELETE_ALMANAC                       0x00008000
+#define GLO_DELETE_SVDIR                         0x00010000
+#define GLO_DELETE_SVSTEER                       0x00020000
+#define GLO_DELETE_ALMANAC_CORR                  0x00040000
+#define GPS_DELETE_TIME_GPS                      0x00080000
+#define GLO_DELETE_TIME                          0x00100000
+#define BDS_DELETE_SVDIR                         0X00200000
+#define BDS_DELETE_SVSTEER                       0X00400000
+#define BDS_DELETE_TIME                          0X00800000
+#define BDS_DELETE_ALMANAC_CORR                  0X01000000
+#define BDS_DELETE_EPHEMERIS                     0X02000000
+#define BDS_DELETE_ALMANAC                       0X04000000
+
+#define GPS_DELETE_ALL                           0xFFFFFFFF
 
 /** AGPS type */
 typedef uint16_t AGpsType;
@@ -380,7 +402,7 @@ typedef uint8_t GpsNavigationMessageType;
  */
 #define AGPS_USE_PSC
 
-/*
+/**
  * Name for the GPS_Geofencing interface.
  */
 #define GPS_GEOFENCING_INTERFACE   "gps_geofencing"
@@ -480,6 +502,7 @@ typedef struct {
     uint32_t    used_in_fix_mask;
 } GpsSvStatus;
 
+
 /* 2G and 3G */
 /* In 3G lac is discarded */
 typedef struct {
@@ -570,7 +593,7 @@ typedef struct {
     size_t          size;
     /**
      * Opens the interface and provides the callback routines
-     * to the implemenation of this interface.
+     * to the implementation of this interface.
      */
     int   (*init)( GpsCallbacks* callbacks );
 
@@ -631,7 +654,7 @@ typedef struct {
     size_t          size;
     /**
      * Opens the XTRA interface and provides the callback routines
-     * to the implemenation of this interface.
+     * to the implementation of this interface.
      */
     int  (*init)( GpsXtraCallbacks* callbacks );
     /** Injects XTRA data into the GPS. */
