@@ -63,6 +63,3 @@ SENSORS_NEED_SETRATE_ON_ENABLE := true
 #    ueventd.te \
 #    vold.te \
 #    wpa_supplicant.te
-
-# Camera wrapper
-TARGET_PROVIDES_CAMERA_HAL := true
