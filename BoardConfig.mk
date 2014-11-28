@@ -33,9 +33,9 @@ TARGET_KERNEL_CONFIG := cyanogenmod_n7100_defconfig
 
 # Selinux
 BOARD_SEPOLICY_DIRS := \
-    device/samsung/n7100/selinux
+    device/samsung/n7100/sepolicy
 
-BOARD_SEPOLICY_UNION := \
+#BOARD_SEPOLICY_UNION := \
     device.te \
     domain.te \
     file.te \
