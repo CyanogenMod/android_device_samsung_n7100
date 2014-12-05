@@ -50,6 +50,9 @@ RECOVERY_FSTAB_VERSION := 2
 
 BOARD_USES_LEGACY_MMAP := true
 
+# Include an expanded selection of fonts
+EXTENDED_FONT_FOOTPRINT := true
+
 # Compatibility with pre-kitkat Sensor HALs
 SENSORS_NEED_SETRATE_ON_ENABLE := true
 
