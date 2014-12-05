@@ -45,6 +45,8 @@ TARGET_EXTERNAL_APPS = sdcard1
 TARGET_RECOVERY_FSTAB := device/samsung/n7100/rootdir/fstab.smdk4x12
 RECOVERY_FSTAB_VERSION := 2
 
+BOARD_USES_LEGACY_MMAP := true
+
 # Compatibility with pre-kitkat Sensor HALs
 SENSORS_NEED_SETRATE_ON_ENABLE := true
 
