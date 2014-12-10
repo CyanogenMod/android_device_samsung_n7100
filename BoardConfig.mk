@@ -66,5 +66,8 @@ RECOVERY_FSTAB_VERSION := 2
 
 BOARD_USES_LEGACY_MMAP := true
 
+# gpsd need this
+TARGET_NEEDS_NON_PIE_SUPPORT := true
+
 # Camera wrapper
 TARGET_PROVIDES_CAMERA_HAL := true
