@@ -155,7 +155,7 @@ int SensorBase::sspEnable(const char* sensorname, int sensorvalue, int en)
 // to keep enable file in sync.
     if(sensorvalue == SSP_ACCEL && !en) {
         //ALOGD("SensorBase: Resetting sensors");
-        for(int i; i < 6; i++){
+        for(int i = 0; i < 6; i++){
 	  newvalue = oldvalue - ssp_sensors[i];
 	  //ALOGD("SensorBase: newvalue: %i ",newvalue);
 	  sspWrite(newvalue);
