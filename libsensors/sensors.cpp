@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-#define ALOG_TAG "Sensors"
-
 #include <hardware/sensors.h>
 #include <fcntl.h>
 #include <errno.h>
@@ -186,7 +184,7 @@ private:
             case ID_PR:
                 return pressure;
         }
-        return -EINVAL;
+        return -1;
     }
 };
 
@@ -247,10 +245,12 @@ sensors_poll_context_t::~sensors_poll_context_t() {
 }
 
 int sensors_poll_context_t::activate(int handle, int enabled) {
-    if (!mInitialized) return -EINVAL;
+    if (!mInitialized)
+        return -EINVAL;
     int index = handleToDriver(handle);
-    //ALOGI("Sensors: handle: %i", handle);
-    if (index < 0) return index;
+    ALOGI("Sensors: enable(%d) handle: %i (index:%i)", enabled, handle, index);
+    if (index < 0)
+        return -EINVAL;
     int err =  mSensors[index]->enable(handle, enabled);
     if (enabled && !err) {
         const char wakeMessage(WAKE_MESSAGE);

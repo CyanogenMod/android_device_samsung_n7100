@@ -22,7 +22,7 @@
 #include <dirent.h>
 #include <sys/select.h>
 
-#include <cutils/log.h>
+#include <utils/Log.h>
 
 #include "LightSensor.h"
 
@@ -48,7 +48,6 @@ LightSensor::LightSensor()
         strcat(input_sysfs_path, input_name);
         strcat(input_sysfs_path, "/device/");
         input_sysfs_path_len = strlen(input_sysfs_path);
-        enable(0, 1);
     }
 }
 
@@ -86,12 +85,11 @@ int LightSensor::setDelay(int32_t handle, int64_t ns)
 
 int LightSensor::enable(int32_t handle, int en)
 {
-    int flags = en ? 1 : 0;
     int err;
-    if (flags != mEnabled) {
+    if (en != mEnabled) {
          err = sspEnable(LOGTAG, SSP_LIGHT, en);
          if(err >= 0){
-              mEnabled = flags;
+              mEnabled = en;
               setInitialState();
 
               return 0;

@@ -23,7 +23,7 @@
 #include <sys/select.h>
 #include <dlfcn.h>
 
-#include <cutils/log.h>
+#include <utils/Log.h>
 #include "AkmSensor.h"
 
 #define LOGTAG "AkmSensor"

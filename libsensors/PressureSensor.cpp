@@ -22,7 +22,7 @@
 #include <dirent.h>
 #include <sys/select.h>
 
-#include <cutils/log.h>
+#include <utils/Log.h>
 
 #include "PressureSensor.h"
 
@@ -52,7 +52,6 @@ PressureSensor::PressureSensor()
         strcat(input_sysfs_path, input_name);
         strcat(input_sysfs_path, "/device/");
         input_sysfs_path_len = strlen(input_sysfs_path);
-        enable(0, 1);
     }
 }
 

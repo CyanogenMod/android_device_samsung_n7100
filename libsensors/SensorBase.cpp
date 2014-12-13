@@ -22,7 +22,7 @@
 #include <dirent.h>
 #include <sys/select.h>
 
-#include <cutils/log.h>
+#include <utils/Log.h>
 
 #include <linux/input.h>
 
@@ -38,6 +38,11 @@ SensorBase::SensorBase(
 {
     if (data_name) {
         data_fd = openInput(data_name);
+    }
+
+    if (!data_fd)
+    {
+        ALOGE("open device %s failed", dev_name);
     }
 }
 
@@ -153,21 +158,22 @@ int SensorBase::sspEnable(const char* sensorname, int sensorvalue, int en)
 //Accel sensor is first on and last off, if we are disabling it
 // assume the screen is off, disable all sensors and zero everything out
 // to keep enable file in sync.
+    ALOGI("name: %s sensor: %i", sensorname, sensorvalue);
     if(sensorvalue == SSP_ACCEL && !en) {
-        //ALOGD("SensorBase: Resetting sensors");
-        for(int i = 0; i < 6; i++){
-	  newvalue = oldvalue - ssp_sensors[i];
-	  //ALOGD("SensorBase: newvalue: %i ",newvalue);
-	  sspWrite(newvalue);
-	}
+        ALOGD("SensorBase: Resetting sensors");
+        for(int i = 0; i < 6; i++) {
+	       newvalue = oldvalue - ssp_sensors[i];
+	       ALOGD("SensorBase: newvalue: %i ",newvalue);
+	       sspWrite(newvalue);
+	    }
         sspWrite('\0');
-	return 0;
+	    return 0;
     } else if(en) {
-        newvalue = oldvalue + sensorvalue;
+        newvalue = oldvalue | sensorvalue;
     } else {
-        newvalue = oldvalue - sensorvalue;
+        newvalue = oldvalue & (~sensorvalue);
     }
-    //ALOGI("%s: name: %s sensor: %i old value: %i  new value: %i ", __func__, sensorname, sensorvalue, oldvalue, newvalue);
+    ALOGI("%s: name: %s sensor: %i old value: %x  new value: %x ", __func__, sensorname, sensorvalue, oldvalue, newvalue);
     sspWrite(newvalue);
     return 0;
 }

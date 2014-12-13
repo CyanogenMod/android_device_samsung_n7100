@@ -21,7 +21,7 @@
 #include <unistd.h>
 #include <dirent.h>
 #include <sys/select.h>
-#include <cutils/log.h>
+#include <utils/Log.h>
 
 #include "AccelSensor.h"
 
@@ -31,7 +31,6 @@
 AccelSensor::AccelSensor()
     : SensorBase(NULL, "accelerometer_sensor"),
       mEnabled(0),
-
       mInputReader(4),
       mHasPendingEvent(false)
 {
@@ -50,7 +49,7 @@ AccelSensor::AccelSensor()
 
 AccelSensor::~AccelSensor() {
 
-  //  ALOGD("AccelSensor::~AccelSensor()");
+    ALOGD("AccelSensor::~AccelSensor()");
     if (mEnabled) {
         enable(0, 0);
     }
@@ -62,12 +61,11 @@ int AccelSensor::setInitialState()
 }
 
 int AccelSensor::enable(int32_t handle, int en) {
-    int flags = en ? 1 : 0;
     int err;
-    if (flags != mEnabled) {
+    if (en != mEnabled) {
          err = sspEnable(LOGTAG, SSP_ACCEL, en);
          if(err >= 0){
-             mEnabled = flags;
+             mEnabled = en;
              setInitialState();
 
              return 0;

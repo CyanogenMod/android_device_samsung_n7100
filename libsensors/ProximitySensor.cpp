@@ -23,7 +23,7 @@
 #include <sys/select.h>
 #include <stdio.h>
 
-#include <cutils/log.h>
+#include <utils/Log.h>
 
 #include "ProximitySensor.h"
 #include "SensorBase.h"
@@ -48,7 +48,6 @@ ProximitySensor::ProximitySensor()
         strcat(input_sysfs_path, input_name);
         strcat(input_sysfs_path, "/device/");
         input_sysfs_path_len = strlen(input_sysfs_path);
-        enable(0, 1);
     }
 }
 
