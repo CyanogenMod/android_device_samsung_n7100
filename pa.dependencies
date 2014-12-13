@@ -26,12 +26,6 @@
         "revision":    "lollipop"
     },
     {
-        "remote":      "cm",
-        "repository":  "CyanogenMod/android_packages_apps_Apollo",
-        "target_path": "packages/apps/Apollo",
-        "revision":    "cm-12.0"
-    },
-    {
         "remote":      "github",
         "repository":  "CrazyWeasel/proprietary_vendor_samsung",
         "target_path": "vendor/samsung",
@@ -39,7 +33,7 @@
     },
     {
         "remote":      "github",
-        "repository":  "Fortune-OS/android_hardware_samsung_slsi_exynos4",
+        "repository":  "tilaksidduram/android_hardware_samsung_slsi_exynos4",
         "target_path": "hardware/samsung_slsi/exynos4",
         "revision":    "android-5.0"
     }

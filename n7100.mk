@@ -55,11 +55,7 @@ PRODUCT_PACKAGES += \
 
 # Additional apps
 PRODUCT_PACKAGES += \
-    Apollo \
-    OpenDelta \
-    DSPManager \
-    libcyanogen-dsp \
-    audio_effects.conf
+    OpenDelta
 
 # NFC
 PRODUCT_PACKAGES += \
