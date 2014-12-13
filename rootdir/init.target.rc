@@ -59,6 +59,13 @@ service sensorhubservice /system/bin/sensorhubservice
     user system
     group input
 
+# sensors
+service sensorservice /system/bin/sensorservice
+    class main
+    user system
+    group input
+
+
 # GPS
 service gpsd /system/bin/gpsd -c /system/etc/gps.xml
     class main
