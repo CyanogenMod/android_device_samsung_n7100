@@ -40,7 +40,13 @@ PRODUCT_COPY_FILES += \
 
 # Camera Wrapper
 PRODUCT_PACKAGES += \
-    camera.exynos4
+    camera.exynos4 \
+    libcameraservice
+
+# Sensors
+PRODUCT_PACKAGES += \
+    sensorservice \
+    sensors.smdk4x12
 
 # Gps
 PRODUCT_COPY_FILES += \
