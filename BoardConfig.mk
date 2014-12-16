@@ -30,6 +30,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/n7100/bluetooth
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
 TARGET_KERNEL_CONFIG := cyanogenmod_n7100_defconfig
+BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 androidboot.selinux=permissive
 
 # ril
 BOARD_RIL_CLASS := ../../../device/samsung/n7100/ril/telephony/java
