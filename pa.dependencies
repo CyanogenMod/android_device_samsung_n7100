@@ -23,18 +23,12 @@
         "remote":      "github",
         "repository":  "tilaksidduram/android_hardware_samsung",
         "target_path": "hardware/samsung",
-        "revision":    "lollipop"
+        "revision":    "cm-12.0"
     },
     {
         "remote":      "github",
-        "repository":  "CrazyWeasel/proprietary_vendor_samsung",
+        "repository":  "TheMuppets/proprietary_vendor_samsung",
         "target_path": "vendor/samsung",
-        "revision":    "n-2.0"
-    },
-    {
-        "remote":      "github",
-        "repository":  "tilaksidduram/android_hardware_samsung_slsi_exynos4",
-        "target_path": "hardware/samsung_slsi/exynos4",
-        "revision":    "android-5.0"
+        "revision":    "cm-12.0"
     }
 ]
