@@ -30,6 +30,10 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/n7100/bluetooth
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
 TARGET_KERNEL_CONFIG := cyanogenmod_n7100_defconfig
+BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 androidboot.selinux=permissive
+
+# ril
+BOARD_RIL_CLASS := ../../../device/samsung/n7100/ril/telephony/java
 
 # Selinux
 BOARD_SEPOLICY_DIRS := \
@@ -54,9 +58,18 @@ TARGET_OTA_ASSERT_DEVICE := t03g,n7100,GT-N7100
 # inherit from the proprietary version
 -include vendor/samsung/n7100/BoardConfigVendor.mk
 
+# Blobs
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/n7100/rootdir/fstab.smdk4x12
 RECOVERY_FSTAB_VERSION := 2
+
+# sensors
+BOARD_USE_LEGACY_SENSORS_FUSION := true
+
+# gpsd need this
+TARGET_NEEDS_NON_PIE_SUPPORT := true
 
 # Camera wrapper
 TARGET_PROVIDES_CAMERA_HAL := true
