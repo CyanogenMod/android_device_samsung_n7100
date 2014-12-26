@@ -1,13 +1,7 @@
 system/bin/gpsd
-system/bin/sensorservice
-system/bin/sensorhubservice
 system/lib/hw/gps.exynos4.so
-system/lib/hw/sensors.smdk4x12.so
-system/lib/hw/sensorhubs.smdk4x12.so
 system/lib/libakm.so
 system/lib/libsec-ril.so
-system/lib/libsensorservice.so
-system/lib/libsensorhubservice.so
 system/usr/idc/sec_e-pen.idc
 system/usr/keylayout/sec_e-pen.kl
 system/usr/keylayout/sec_touchkey.kl
