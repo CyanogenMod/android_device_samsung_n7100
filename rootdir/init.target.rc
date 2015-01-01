@@ -46,12 +46,6 @@ service cpboot-daemon /sbin/cbd -d -p 10
     user root
     group radio cache inet misc audio sdcard_rw log
 
-# sensorhub
-service sensorhubservice /system/bin/sensorhubservice
-    class main
-    user system
-    group input
-
 # GPS
 service gpsd /system/bin/gpsd -c /system/etc/gps.xml
     class main
