@@ -57,6 +57,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     OpenDelta
 
+# Sensors
+PRODUCT_PACKAGES += \
+    sensors.smdk4x12
+
 # NFC
 PRODUCT_PACKAGES += \
     nfc.exynos4 \
