@@ -266,7 +266,6 @@ We are able to have most of our routing static so do that
         <ctl name="MIXINL IN2L Volume" val="1"/>
         <ctl name="AIF1ADCL Source" val="Left"/>
         <ctl name="AIF1ADCR Source" val="Left"/>
-        <ctl name="AIF1ADC2L Mixer ADC/DMIC Switch" val="1"/>
         <ctl name="AIF1ADC1R Mixer ADC/DMIC Switch" val="1"/>
         <ctl name="AIF1ADC1 HPF Mode" val="1"/>
         <ctl name="AIF1ADC1 HPF Switch" val="1"/>
@@ -307,8 +306,6 @@ We are able to have most of our routing static so do that
         <ctl name="AIF2ADCL Source" val="0"/>
         <ctl name="AIF1ADCL Source" val="Left"/>
         <ctl name="AIF1ADCL Source" val="Right"/>
-        <ctl name="AIF1ADC2L Mixer ADC/DMIC Switch" val="1"/>
-        <ctl name="AIF1ADC2L Mixer ADC/DMIC Switch" val="1"/>
         <ctl name="IN1L Volume" val="22"/>
         <ctl name="MIXINL IN1L Switch" val="1"/>
         <ctl name="MIXINL IN1L Volume" val="1"/>
