@@ -2603,9 +2603,51 @@ static int adev_set_mode(struct audio_hw_device *dev, audio_mode_t mode)
 
 static int adev_set_mic_mute(struct audio_hw_device *dev, bool state)
 {
+    int headset_on;
+    int headphone_on;
+    int speaker_on;
+    int earpiece_on;
+    int bt_on; 
+
     struct m0_audio_device *adev = (struct m0_audio_device *)dev;
 
+    headset_on = adev->out_device & AUDIO_DEVICE_OUT_WIRED_HEADSET;
+    headphone_on = adev->out_device & AUDIO_DEVICE_OUT_WIRED_HEADPHONE;
+    speaker_on = adev->out_device & AUDIO_DEVICE_OUT_SPEAKER;
+    earpiece_on = adev->out_device & AUDIO_DEVICE_OUT_EARPIECE;
+    bt_on = adev->out_device & AUDIO_DEVICE_OUT_ALL_SCO;
+
     adev->mic_mute = state;
+
+    if (adev->mode == AUDIO_MODE_IN_CALL) {
+        if (state) {
+            if (speaker_on || earpiece_on || headphone_on) {            
+                ALOGD("%s: set voicecall route: default_input_disable", __func__);
+                set_bigroute_by_array(adev->mixer, default_input_disable, 1);
+            }
+            if (headset_on) {               
+                ALOGD("%s: set voicecall route: headset_input_disable", __func__);
+                set_bigroute_by_array(adev->mixer, headset_input_disable, 1);
+            }
+            if (bt_on) {
+                ALOGD("%s: set voicecall route: bt_input_disable", __func__);
+                set_bigroute_by_array(adev->mixer, bt_input_disable, 1);
+            }
+        } else {
+            if (speaker_on || earpiece_on || headphone_on) {
+                ALOGD("%s: set voicecall route: default_input", __func__);
+                set_bigroute_by_array(adev->mixer, default_input, 1);
+            }
+            if (headset_on) {
+                ALOGD("%s: set voicecall route: headset_input", __func__);
+                set_bigroute_by_array(adev->mixer, headset_input, 1);
+            }
+            if (bt_on) {
+                ALOGD("%s: set voicecall route: bt_input", __func__);
+                set_bigroute_by_array(adev->mixer, bt_input, 1);
+            }
+        }
+    }
 
     return 0;
 }
