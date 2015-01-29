@@ -693,6 +693,9 @@ static void select_output_device(struct m0_audio_device *adev)
             ALOGD("%s: set voicecall route: bt_disable", __func__);
             set_bigroute_by_array(adev->mixer, bt_disable, 1);
         }
+        // this is needed to mute the current device when output devices are switched, but mute is set
+        adev->hw_device.set_mic_mute(&adev->hw_device, adev->mic_mute);
+
         set_incall_device(adev);
     }
 }
