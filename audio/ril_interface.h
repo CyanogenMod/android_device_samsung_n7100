@@ -70,6 +70,11 @@ enum ril_two_mic_state {
     TWO_MIC_SOLUTION_ON
 };
 
+enum ril_mic_mute {
+    MIC_UNMUTE,
+    MIC_MUTE
+};
+
 /* Function prototypes */
 int ril_open(struct ril_handle *ril);
 int ril_close(struct ril_handle *ril);
@@ -79,5 +84,6 @@ int ril_set_call_audio_path(struct ril_handle *ril, enum ril_audio_path path);
 int ril_set_call_clock_sync(struct ril_handle *ril, enum ril_clock_state state);
 void ril_register_set_wb_amr_callback(void *function, void *data);
 int ril_set_two_mic_control(struct ril_handle *ril, enum ril_two_mic_device device, enum ril_two_mic_state state);
+int ril_set_mic_mute(struct ril_handle *ril, enum ril_mic_mute state);
 #endif
 
