@@ -132,16 +132,16 @@ We are able to have most of our routing static so do that
 <device name="speaker">
     <path name="on">
         <ctl name="SPK Switch" val="1"/>
-        <ctl name="AIF1DAC1 Volume" val="96"/>
+        <ctl name="AIF1DAC1 Volume" val="98"/>
         <ctl name="AIF1 Boost Volume" val="0"/>
-        <ctl name="DAC1 Volume" val="96"/>
+        <ctl name="DAC1 Volume" val="98"/>
         <ctl name="Left Output Mixer DAC Volume" val="7"/>
         <ctl name="Right Output Mixer DAC Volume" val="7"/>
         <ctl name="SPKL DAC1 Volume" val="1"/>
         <ctl name="SPKR DAC1 Volume" val="1"/>
         <ctl name="Speaker Mixer Volume" val="3"/>
         <ctl name="Speaker Boost Volume" val="4"/>
-        <ctl name="Speaker Volume" val="57"/>
+        <ctl name="Speaker Volume" val="59"/>
     </path>
     <path name="off">
         <ctl name="SPK Switch" val="0"/>
