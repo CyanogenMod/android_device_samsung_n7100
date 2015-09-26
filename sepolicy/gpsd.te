@@ -1,0 +1,9 @@
+allow gpsd rild:unix_stream_socket connectto;
+allow gpsd system_data_file:dir { add_name write };
+allow gpsd system_data_file:file { create write lock open };
+allow gpsd system_data_file:fifo_file { create read write open setattr };
+allow gpsd sysfs_wake_lock:file { read write open };
+allow gpsd servicemanager:binder call;
+allow gpsd system_server:binder call;
+allow gpsd system_server:unix_stream_socket { read write };
+

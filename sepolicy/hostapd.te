@@ -1,0 +1,1 @@
+allow hostapd rfkill_device:chr_file { read open };

@@ -1,0 +1,7 @@
+allow system_server efs_file:file { read open };
+allow system_server efs_file:dir search;
+allow system_server sensors_data_file:file { read open };
+allow system_server uhid_device:chr_file { read write ioctl open };
+allow system_server ump_device:chr_file { read write ioctl open };
+allow system_server gpsd:binder transfer;
+

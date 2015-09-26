@@ -1,0 +1,13 @@
+# MFC firmware
+type firmware_mfc, file_type;
+
+# Common Exynos firmware
+type firmware_exynos, file_type;
+
+# Sensors data
+type sensors_data_file, file_type, data_file_type;
+
+# Display sysfs
+type sysfs_display, fs_type, sysfs_type;
+
+

@@ -1,0 +1,4 @@
+allow bluetooth firmware_exynos:dir { read open search };
+allow bluetooth firmware_exynos:file { read open };
+allow bluetooth bluetooth_efs_file:dir search;
+allow bluetooth bluetooth_efs_file:file read;

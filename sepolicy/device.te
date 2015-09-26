@@ -1,0 +1,21 @@
+# Secure memory
+type secmem_device, dev_type;
+
+# Unified Memory Management       
+type ump_device, dev_type;
+
+# Efs block device
+type efs_block_device, dev_type;
+
+# Rfkill device
+type rfkill_device, dev_type;
+
+# MFC device
+type mfc_device, dev_type;
+
+# Fm radio device
+type  fm_radio_device, dev_type;
+
+# Gadget serial device
+type gadget_serial_device, dev_type;
+

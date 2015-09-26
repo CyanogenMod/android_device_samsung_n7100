@@ -1,0 +1,60 @@
+# Graphics
+/dev/mali                               u:object_r:gpu_device:s0
+/dev/ump                                u:object_r:ump_device:s0
+/dev/fimg2d                             u:object_r:video_device:s0
+/dev/s5p-smem                           u:object_r:secmem_device:s0
+
+# RIL
+/dev/umts_boot0                         u:object_r:radio_device:s0
+/dev/umts_csd                           u:object_r:radio_device:s0
+/dev/umts_ipc0                          u:object_r:radio_device:s0
+/dev/umts_loopback0                     u:object_r:radio_device:s0
+/dev/umts_ramdump0                      u:object_r:radio_device:s0
+/dev/umts_rfs0                          u:object_r:radio_device:s0
+/dev/umts_router                        u:object_r:radio_device:s0
+
+# Efs
+/dev/block/mmcblk0p3                    u:object_r:efs_block_device:s0
+/factory(/.*)?                          u:object_r:efs_file:s0
+
+# Camera
+/data/ISP_CV                            u:object_r:camera_data_file:s0
+/dev/exynos-mem                         u:object_r:video_device:s0
+/dev/s3c-mfc                            u:object_r:mfc_device:s0
+/dev/video[0-3]*                        u:object_r:camera_device:s0
+
+# Bluetooth
+/dev/ttySAC0                            u:object_r:hci_attach_dev:s0
+/factory/bluetooth(/.*)?                u:object_r:bluetooth_efs_file:s0
+/sys/class/rfkill/rfkill0/state         u:object_r:sysfs_bluetooth_writable:s0
+/sys/class/rfkill/rfkill0/type          u:object_r:sysfs_bluetooth_writable:s0
+
+# Display
+/sys/class/mdnie/mdnie/scenario         u:object_r:sysfs_display:s0
+/sys/class/mdnie/mdnie/mode             u:object_r:sysfs_display:s0
+
+# GPS
+/dev/ttySAC1                            u:object_r:gps_device:s0
+/system/bin/gpsd                        u:object_r:gpsd_exec:s0
+
+# Sensors
+/dev/akm8963                            u:object_r:sensors_device:s0
+/efs/gyro_cal_data                      u:object_r:sensors_data_file:s0
+
+# Wifi
+/dev/rfkill                             u:object_r:rfkill_device:s0
+/factory/wifi/.mac.info                 u:object_r:wifi_data_file:s0
+
+# Firmwares
+/system/vendor/firmware(/.*)?           u:object_r:firmware_exynos:s0
+/system/vendor/firmware/mfc_fw.bin      u:object_r:firmware_mfc:s0
+/data/cfw(/.*)?                         u:object_r:firmware_exynos:s0
+
+# Vibrator
+/dev/tspdrv                             u:object_r:input_device:s0
+/sys/vibrator/pwm_val                   u:object_r:sysfs:s0
+
+# Misc
+/dev/HPD                                u:object_r:video_device:s0
+/dev/fmradio                            u:object_r:fm_radio_device:s0
+/dev/ttyGS[0-9]*                        u:object_r:gadget_serial_device:s0

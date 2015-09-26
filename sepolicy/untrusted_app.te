@@ -1,0 +1,2 @@
+allow untrusted_app ump_device:chr_file { open read write ioctl };
+

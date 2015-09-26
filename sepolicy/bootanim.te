@@ -1,0 +1,1 @@
+allow bootanim ump_device:chr_file { open read write ioctl };
