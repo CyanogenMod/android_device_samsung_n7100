@@ -90,6 +90,10 @@ PRODUCT_PACKAGES += \
 
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
+# Samsung symbols
+PRODUCT_PACKAGES += \
+    libsamsung_symbols
+
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=SamsungExynos4RIL \
