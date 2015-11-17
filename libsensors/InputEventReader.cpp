@@ -21,6 +21,7 @@
 
 #include <sys/cdefs.h>
 #include <sys/types.h>
+#include <cstring>
 
 #include <linux/input.h>
 

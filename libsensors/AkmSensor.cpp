@@ -22,6 +22,7 @@
 #include <dirent.h>
 #include <sys/select.h>
 #include <dlfcn.h>
+#include <cstring>
 
 #include <cutils/log.h>
 #include "AkmSensor.h"

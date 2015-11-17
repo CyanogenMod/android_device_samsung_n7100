@@ -22,6 +22,7 @@
 #include <dirent.h>
 #include <sys/select.h>
 #include <stdio.h>
+#include <cstring>
 
 #include <cutils/log.h>
 
