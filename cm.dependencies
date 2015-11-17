@@ -14,5 +14,9 @@
     {
         "repository": "android_hardware_samsung",
         "target_path": "hardware/samsung"
+    },
+    {
+        "repository": "android_external_stlport",
+        "target_path": "external/stlport"
     }
 ]
