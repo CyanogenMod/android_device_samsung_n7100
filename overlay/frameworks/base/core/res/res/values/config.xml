@@ -294,4 +294,7 @@
 
     <!-- bool value to for enabling motion accelerometer -->
     <bool name="use_motion_accel">true</bool>
+
+    <!-- Enable doze powersaving -->
+    <bool name="config_enableAutoPowerModes">true</bool>
 </resources>
