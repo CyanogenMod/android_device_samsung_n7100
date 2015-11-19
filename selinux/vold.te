@@ -1,2 +1,0 @@
-allow vold kernel:process setsched;
-allow vold sdcardd_exec:file { read open execute execute_no_trans };

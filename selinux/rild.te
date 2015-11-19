@@ -1,7 +1,0 @@
-allow rild self:netlink_socket { create bind read write };
-allow rild self:netlink_route_socket { write };
-allow rild self:netlink_kobject_uevent_socket { create bind read write setopt };
-
-allow rild radio_device:chr_file rw_file_perms;
-allow rild efs_block_device:blk_file rw_file_perms;
-allow rild efs_file:file { read open write setattr };
