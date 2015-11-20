@@ -269,9 +269,6 @@
          policy/src/com/android/internal/policy/impl/PhoneWindowManager.java -->
     <integer name="config_doubleTapOnHomeBehavior">0</integer>
 
-    <!-- Is the device LTE capable -->
-    <bool name="config_lte_capable">false</bool>
-
     <!-- Boolean to enable stk functionality on Samsung phones -->
     <bool name="config_samsung_stk">true</bool>
 
@@ -315,9 +312,6 @@
 
     <!-- If supported, are dreams enabled? (by default) -->
     <bool name="config_dreamsEnabledByDefault">false</bool>
-
-    <!-- bool value to for enabling motion accelerometer -->
-    <bool name="use_motion_accel">true</bool>
 
     <!-- Enable doze powersaving -->
     <bool name="config_enableAutoPowerModes">true</bool>
