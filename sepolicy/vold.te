@@ -1,2 +1,3 @@
 allow vold efs_file:dir { read getattr open ioctl };
+allow vold boot_block_device:blk_file { read write open ioctl getattr };
 

@@ -1,4 +1,5 @@
 allow servicemanager gpsd:dir search;
 allow servicemanager gpsd:file { read open };
 allow servicemanager gpsd:process getattr;
+allow servicemanager log_device:chr_file { open write };
 

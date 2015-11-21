@@ -12,6 +12,7 @@ type rfkill_device, dev_type;
 
 # MFC device
 type mfc_device, dev_type;
+type hpd_device, dev_type;
 
 # Fm radio device
 type  fm_radio_device, dev_type;

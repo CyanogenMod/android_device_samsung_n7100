@@ -4,4 +4,7 @@ allow system_server sensors_data_file:file { read open };
 allow system_server uhid_device:chr_file { read write ioctl open };
 allow system_server ump_device:chr_file { read write ioctl open };
 allow system_server gpsd:binder transfer;
+allow system_server dex2oat_exec:file { execute execute_no_trans read open };
+allow system_server system_file:file { execmod };
+allow system_server self:capability sys_module;
 

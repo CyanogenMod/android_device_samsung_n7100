@@ -1,2 +1,7 @@
 allow untrusted_app ump_device:chr_file { open read write ioctl };
+allow untrusted_app block_device:dir { open read search };
+allow untrusted_app kernel:system { module_request };
+allow untrusted_app firmware_camera:dir { read getattr open };
+allow untrusted_app firmware_camera:file getattr;
+allow untrusted_app firmware_mfc:file getattr;
 
