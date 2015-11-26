@@ -1,3 +1,0 @@
-allow ueventd firmware_mfc:file { read getattr open };
-allow ueventd firmware_exynos:dir search;
-allow ueventd firmware_exynos:file { read getattr open };

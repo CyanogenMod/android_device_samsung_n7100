@@ -1,2 +1,0 @@
-allow wpa rfkill_device:chr_file { read open };
-allow wpa log_device:chr_file { open write };

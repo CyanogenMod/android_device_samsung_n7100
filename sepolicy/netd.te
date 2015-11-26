@@ -1,3 +1,0 @@
-allow netd self:capability fsetid;
-allow netd init:tcp_socket { read write getopt };
-allow netd log_device:chr_file { open write };

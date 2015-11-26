@@ -1,1 +1,0 @@
-allow shared_relro log_device:chr_file { write };

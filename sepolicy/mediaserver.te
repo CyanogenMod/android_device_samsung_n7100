@@ -1,6 +1,0 @@
-allow mediaserver camera_data_file:file write;
-allow mediaserver mfc_device:chr_file { read write ioctl open };
-allow mediaserver ump_device:chr_file { read write ioctl open };
-
-# Bluetooth audio
-allow mediaserver bluetooth:unix_stream_socket { connectto };

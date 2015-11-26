@@ -1,3 +1,0 @@
-allow system_app sysfs_display:file { write getattr open };
-allow system_app ump_device:chr_file { ioctl open read write };
-
