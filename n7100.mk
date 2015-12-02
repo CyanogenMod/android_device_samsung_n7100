@@ -53,6 +53,10 @@ PRODUCT_PACKAGES += \
     libsecril-client-sap \
     SamsungServiceMode
 
+# RIL
+PRODUCT_PACKAGES += \
+    ril-wrapper
+
 # Additional apps
 PRODUCT_PACKAGES += \
     OpenDelta
