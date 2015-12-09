@@ -49,9 +49,10 @@ PRODUCT_PACKAGES += \
     DeviceSettings \
     SamsungServiceMode
 
-# RIL
+# RIL & GPS fix
 PRODUCT_PACKAGES += \
-    ril-wrapper
+    ril-wrapper \
+    libdmitry
 
 # Additional apps
 PRODUCT_PACKAGES += \
