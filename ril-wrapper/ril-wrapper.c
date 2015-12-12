@@ -28,6 +28,18 @@
 static RIL_RadioFunctions const *mRealRadioFuncs;
 static const struct RIL_Env *mEnv;
 
+static void rilOnRequest(int request, void *data, size_t datalen, RIL_Token t)
+{
+    switch (request) {
+        case RIL_REQUEST_GET_RADIO_CAPABILITY:
+            RLOGW("Returning NOT_SUPPORTED on GET_RADIO_CAPABILITY");
+            mEnv->OnRequestComplete(t, RIL_E_REQUEST_NOT_SUPPORTED, NULL, 0);
+            break;
+        default:
+            mRealRadioFuncs->onRequest(request, data, datalen, t);
+    }
+}
+
 const RIL_RadioFunctions* RIL_Init(const struct RIL_Env *env, int argc, char **argv)
 {
 	RIL_RadioFunctions const* (*fRealRilInit)(const struct RIL_Env *env, int argc, char **argv);
@@ -74,6 +86,7 @@ const RIL_RadioFunctions* RIL_Init(const struct RIL_Env *env, int argc, char **a
 
 	//copy the real RIL's info struct, then replace the onRequest pointer with our own
 	rilInfo = *mRealRadioFuncs;
+	rilInfo.onRequest = rilOnRequest;
 
 	RLOGD("Wrapped RIL version is '%s'\n", mRealRadioFuncs->getVersion());
 
