@@ -19,6 +19,9 @@
 
 -include device/samsung/smdk4412-common/BoardCommonConfig.mk
 
+# Bionic
+MALLOC_IMPL := dlmalloc
+
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := xmm6262
