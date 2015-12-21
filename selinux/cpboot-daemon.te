@@ -1,0 +1,25 @@
+type cpboot-daemon, domain;
+
+permissive cpboot-daemon;
+
+allow cpboot-daemon cgroup:dir { create add_name };
+allow cpboot-daemon device:dir { write remove_name add_name };
+allow cpboot-daemon efs_block_device:blk_file { read open };
+allow cpboot-daemon efs_device_file:dir search;
+allow cpboot-daemon efs_file:file { read write open };
+allow cpboot-daemon init:unix_stream_socket connectto;
+allow cpboot-daemon log_device:chr_file { write open };
+allow cpboot-daemon log_device:dir search;
+allow cpboot-daemon property_socket:sock_file write;
+allow cpboot-daemon radio_device:chr_file { read write ioctl open };
+allow cpboot-daemon radio_prop:property_service set;
+allow cpboot-daemon self:capability { setuid };
+allow cpboot-daemon sysfs_radio:file { read write open };
+allow cpboot-daemon usbfs:dir search;
+allow cpboot-daemon self:capability dac_override;
+allow cpboot-daemon cbd_device:chr_file create_file_perms;
+
+# FIX ME
+# allow cpboot-daemon usbfs:filesystem mount;
+# allow cpboot-daemon self:capability { mknod };
+

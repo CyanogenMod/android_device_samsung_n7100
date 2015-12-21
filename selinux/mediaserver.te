@@ -1,0 +1,11 @@
+allow mediaserver { firmware_exynos }:file r_file_perms;
+allow mediaserver firmware_exynos:dir r_dir_perms;
+allow mediaserver camera_data_file:file rw_file_perms;
+allow mediaserver mfc_device:chr_file rw_file_perms;
+
+# Bluetooth audio
+allow mediaserver bluetooth:unix_stream_socket { connectto };
+
+allow mediaserver { storage_file mnt_user_file }:dir { search read };
+allow mediaserver storage_file:lnk_file read;
+allow mediaserver mnt_user_file:lnk_file read;

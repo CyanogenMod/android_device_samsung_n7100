@@ -1,0 +1,3 @@
+SecTVOutService                           u:object_r:surfaceflinger_service:s0
+Exynos.HWCService                         u:object_r:surfaceflinger_service:s0
+Exynos.IPService                          u:object_r:surfaceflinger_service:s0

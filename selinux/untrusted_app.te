@@ -1,0 +1,5 @@
+allow untrusted_app storage_stub_file:dir getattr;
+allow untrusted_app log_device:chr_file { read write };
+allow untrusted_app self:udp_socket ioctl;
+allow untrusted_app app_data_file:file create_file_perms;
+allow untrusted_app app_data_file:dir create_dir_perms;

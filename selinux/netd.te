@@ -1,0 +1,3 @@
+allow netd init:tcp_socket { read write getopt };
+allow netd gpsd:fd use;
+allow netd gpsd:tcp_socket { read write getopt setopt };
