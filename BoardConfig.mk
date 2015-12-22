@@ -26,6 +26,9 @@ BOARD_RIL_CLASS := ../../../hardware/samsung/ril
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/n7100/include
 COMMON_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
 
+# Graphics
+TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/n7100/bluetooth
 
