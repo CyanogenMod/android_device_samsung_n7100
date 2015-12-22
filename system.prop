@@ -5,6 +5,5 @@
 dalvik.vm.dexopt-data-only=1
 rild.libpath=/system/lib/ril-wrapper.so
 rild.libargs=-d /dev/ttyS0
-ro.ril.telephony.mqanelements=5
 ro.sf.lcd_density=320
 ro.lcd_min_brightness=20
