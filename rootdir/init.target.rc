@@ -55,4 +55,4 @@ service gps-daemon /system/bin/sh /system/bin/gps_daemon.sh
     user gps
     group system inet sdcard_rw gps
     ioprio be 0
-    seclabel u:r:glgps:s0
+    seclabel u:r:gpsd:s0
