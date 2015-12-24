@@ -14,21 +14,6 @@ on post-fs-data
     # Restorecon
     restorecon_recursive /efs
 
-# GPS init
-    mkdir /data/gps
-    chown gps system /data/gps
-    chmod 770 /data/gps
-    write /sys/class/sec/gps/GPS_PWR_EN/export 162
-    write /sys/class/sec/gps/GPS_PWR_EN/value 0
-    write /sys/class/sec/gps/GPS_PWR_EN/direction out
-    chown gps system /sys/class/sec/gps/GPS_PWR_EN/value
-    chmod 0664 /sys/class/sec/gps/GPS_PWR_EN/value
-    chown gps system /dev/ttySAC1
-    chmod 0660 /dev/ttySAC1
-    restorecon /sys/class/sec/gps/export
-    restorecon /sys/class/sec/gps/GPS_PWR_EN/value
-    restorecon /sys/class/sec/gps/GPS_PWR_EN/direction
-
     # SensorHub
     chown system radio /sys/class/sensors/ssp_sensor/enable
     chown system radio /sys/class/sensors/ssp_sensor/mcu_rev
@@ -55,4 +40,3 @@ service gps-daemon /system/bin/sh /system/bin/gps_daemon.sh
     user gps
     group system inet sdcard_rw gps
     ioprio be 0
-    seclabel u:r:gpsd:s0
