@@ -1,5 +1,5 @@
 on init
-    export LD_SHIM_LIBS /system/lib/libsec-ril.so|libsamsung_symbols.so
+    export LD_SHIM_LIBS /system/lib/libsec-ril.so|libsamsung_symbols.so:/system/bin/gpsd|libdmitry.so
     # Vibetonz
     export VIBE_PIPE_PATH /dev/pipes
     mkdir /dev/pipes 0771 shell shell
