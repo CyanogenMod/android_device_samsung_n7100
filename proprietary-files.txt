@@ -1,5 +1,5 @@
 system/bin/gpsd
-system/lib/hw/gps.exynos4.so
+system/lib/hw/gps.default.so
 system/lib/libakm.so
 system/lib/libsec-ril.so
 system/usr/idc/sec_e-pen.idc
