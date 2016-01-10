@@ -19,7 +19,4 @@
 <resources>
     <!-- Determines if device implements a noise suppression device for in call audio-->
     <bool name="has_in_call_noise_suppression">true</bool>
-
-    <!-- Audio parameter for setting noise suppression-->
-    <string name="in_call_noise_suppression_audioparameter">noise_suppression=true=false</string>
 </resources>

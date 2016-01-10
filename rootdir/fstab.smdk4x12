@@ -10,8 +10,8 @@
 /dev/block/mmcblk0p14	 /preload            ext4      noatime,nosuid,nodev,journal_async_commit                 wait
 /dev/block/mmcblk0p16    /data               ext4      noatime,nosuid,nodev,discard,noauto_da_alloc,journal_async_commit,errors=panic    wait,check,encryptable=footer
 
-/devices/platform/s3c-sdhci.2/mmc_host/mmc1     /storage/sdcard1    auto      defaults      voldmanaged=sdcard1:auto
-/devices/platform/s5p-ehci                     /storage/usbdisk0   auto      defaults      voldmanaged=usbdisk0:auto
+/devices/platform/s3c-sdhci.2/mmc_host/mmc1     auto    auto      defaults      voldmanaged=sdcard1:auto
+/devices/platform/s5p-ehci                     auto   auto      defaults      voldmanaged=usbdisk0:auto
 
 # recovery
 /dev/block/mmcblk0p8		/boot				emmc		defaults		recoveryonly
