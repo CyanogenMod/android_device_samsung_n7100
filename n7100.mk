@@ -40,6 +40,10 @@ PRODUCT_PACKAGES += \
     camera.smdk4x12 \
     Snap
 
+# Busybox
+PRODUCT_PACKAGES += \
+    busybox
+
 # Gps
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml \
