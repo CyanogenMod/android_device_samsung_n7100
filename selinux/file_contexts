@@ -61,5 +61,3 @@
 
 # Misc
 /dev/HPD                                u:object_r:hpd_device:s0
-/system/bin/macloader                   u:object_r:macloader_exec:s0
-/system/bin/tinyplay                    u:object_r:tinyplay_exec:s0

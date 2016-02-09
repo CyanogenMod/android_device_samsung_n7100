@@ -1,6 +1,0 @@
-type tinyplay, domain;
-type tinyplay_exec, exec_type, file_type;
-init_daemon_domain(tinyplay)
-
-allow tinyplay audio_device:chr_file { open read write ioctl };
-allow tinyplay audio_device:dir search;

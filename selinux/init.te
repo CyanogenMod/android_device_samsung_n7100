@@ -11,5 +11,3 @@ allow init rild:process noatsecure;
 
 domain_trans(init, rootfs, gpsd)
 domain_trans(init, rootfs, cpboot-daemon)
-domain_trans(init, rootfs, tinyplay)
-domain_trans(init, rootfs, macloader)
