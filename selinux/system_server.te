@@ -4,6 +4,9 @@ allow system_server sensors_data_file:file r_file_perms;
 allow system_server wpa_socket:unix_dgram_socket sendto;
 
 allow system_server sysfs:file { read open write };
+allow system_server sysfs_display:lnk_file rw_file_perms;
+allow system_server sysfs_display:dir rw_dir_perms;
+allow system_server sysfs_display:file rw_file_perms;
 allow system_server self:capability { sys_module };
 
 allow system_server efs_file:dir search;
