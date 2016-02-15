@@ -37,8 +37,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.smdk4x12 \
-    Snap
+    camera.smdk4x12
 
 # Busybox
 PRODUCT_PACKAGES += \
