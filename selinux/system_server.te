@@ -22,6 +22,8 @@ allow system_server system_file:file execmod;
 # /efs/wifi/.mac.info
 allow system_server wifi_data_file:file { read open };
 
+allow system_server radio_data:dir r_dir_perms;
+
 allow system_server gpsd:binder transfer;
 type_transition system_server system_data_file:fifo_file gps_data_file ".gps.interface.pipe.to_jni";
 
