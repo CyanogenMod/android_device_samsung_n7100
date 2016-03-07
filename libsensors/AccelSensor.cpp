@@ -99,7 +99,7 @@ int AccelSensor::setDelay(int32_t handle, int64_t ns)
     fd = open(input_sysfs_path, O_RDWR);
     if (fd >= 0) {
         char buf[80];
-        sprintf(buf, "%lld", ns / 10000000 * 10); // Some flooring to match stock value
+        sprintf(buf, "%lld", ns);
         write(fd, buf, strlen(buf)+1);
         close(fd);
         return 0;
