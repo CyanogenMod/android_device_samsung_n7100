@@ -1,0 +1,7 @@
+recovery_only(`
+
+# firmware files
+allow recovery firmware_exynos:dir { create setattr relabelto relabelfrom };
+allow recovery firmware_exynos:file { create write open setattr relabelto relabelfrom };
+allow recovery firmware_mfc:file { create write open setattr relabelto relabelfrom };
+')
