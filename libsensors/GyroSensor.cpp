@@ -80,16 +80,19 @@ int GyroSensor::setInitialState() {
 
 int GyroSensor::enable(int32_t handle, int en) {
     int flags = en ? 1 : 0;
-    int err;
+    int fd;
     if (flags != mEnabled) {
-         if(err >= 0){
-             mEnabled = flags;
-             err = sspEnable(LOGTAG, SSP_GYRO, en);
-             setInitialState();
+        strcpy(&input_sysfs_path[input_sysfs_path_len], "enable");
+        fd = open(input_sysfs_path, O_RDWR);
+        if (fd >= 0){
+            write(fd, en == 1 ? "1" : "0", 2);
+            close(fd);
+            mEnabled = flags;
+            setInitialState();
 
-             return 0;
-         }
-         return -1;
+            return 0;
+        }
+        return -1;
     }
     return 0;
 }
