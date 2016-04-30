@@ -1,0 +1,13 @@
+# mount point  fstype          device
+/efs                   ext4            /dev/block/mmcblk0p3
+/boot                  emmc            /dev/block/mmcblk0p8
+/recovery              emmc            /dev/block/mmcblk0p9
+/cache                 ext4            /dev/block/mmcblk0p12
+/system                        ext4            /dev/block/mmcblk0p13
+/data                  ext4            /dev/block/mmcblk0p16 length=-16384
+/preload               ext4            /dev/block/mmcblk0p14
+/modem                 emmc            /dev/block/mmcblk0p10
+
+/sdcard                        datamedia   /dev/null
+/external_sd   auto            /dev/block/mmcblk1p1    /dev/block/mmcblk1
+

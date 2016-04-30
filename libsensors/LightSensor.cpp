@@ -21,8 +21,9 @@
 #include <unistd.h>
 #include <dirent.h>
 #include <sys/select.h>
+#include <cstring>
 
-#include <utils/Log.h>
+#include <cutils/log.h>
 
 #include "LightSensor.h"
 
@@ -48,6 +49,7 @@ LightSensor::LightSensor()
         strcat(input_sysfs_path, input_name);
         strcat(input_sysfs_path, "/device/");
         input_sysfs_path_len = strlen(input_sysfs_path);
+        enable(0, 1);
     }
 }
 
@@ -71,7 +73,7 @@ int LightSensor::setDelay(int32_t handle, int64_t ns)
 {
     int fd;
 
-    strcpy(&input_sysfs_path[input_sysfs_path_len], "light_poll_delay");
+    strcpy(&input_sysfs_path[input_sysfs_path_len], "poll_delay");
     fd = open(input_sysfs_path, O_RDWR);
     if (fd >= 0) {
         char buf[80];
@@ -85,11 +87,12 @@ int LightSensor::setDelay(int32_t handle, int64_t ns)
 
 int LightSensor::enable(int32_t handle, int en)
 {
+    int flags = en ? 1 : 0;
     int err;
-    if (en != mEnabled) {
+    if (flags != mEnabled) {
          err = sspEnable(LOGTAG, SSP_LIGHT, en);
          if(err >= 0){
-              mEnabled = en;
+              mEnabled = flags;
               setInitialState();
 
               return 0;

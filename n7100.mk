@@ -22,11 +22,8 @@ LOCAL_PATH := device/samsung/n7100
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# This device is xhdpi.  However the platform doesn't
-# currently contain all of the bitmaps at xhdpi density so
-# we do this little trick to fall back to the hdpi version
-# if the xhdpi doesn't exist.
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+# Screen density
+PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # Init files
@@ -38,25 +35,42 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/t03g
 
-# Camera Wrapper
+# Camera
 PRODUCT_PACKAGES += \
-    camera.smdk4x12 \
-    libcameraservice
+    camera.smdk4x12
 
-# Sensors
+# f2fs
 PRODUCT_PACKAGES += \
-    sensorservice \
-    sensors.smdk4x12
+    fibmap.f2fs \
+    fsck.f2fs \
+    mkfs.f2fs
+
+# Busybox
+PRODUCT_PACKAGES += \
+    busybox
 
 # Gps
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml
+    $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml \
+    $(LOCAL_PATH)/gps_daemon.sh:system/bin/gps_daemon.sh
 
 # Product specific Packages
 PRODUCT_PACKAGES += \
-    libsecril-client \
-    libsecril-client-sap \
+    DeviceSettings \
     SamsungServiceMode
+
+# RIL & GPS fix
+PRODUCT_PACKAGES += \
+    ril-wrapper \
+    libdmitry
+
+# Additional apps
+PRODUCT_PACKAGES += \
+    OpenDelta
+
+# Sensors
+PRODUCT_PACKAGES += \
+    sensors.smdk4x12
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -82,14 +96,19 @@ PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
 PRODUCT_PACKAGES += \
-    com.android.nfc_extras
+    com.android.nfc_extras \
+    Stk
 
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
+
+# Samsung symbols
+PRODUCT_PACKAGES += \
+    libsamsung_symbols
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=SamsungExynos4RIL \
-    mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
+    mobiledata.interfaces=pdp0,gprs,ppp0,rmnet0,rmnet1 \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.call_ring.delay=3000
 
@@ -98,5 +117,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
+# Barometer
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml
+
+# Allow tethering without provisioning app
+PRODUCT_PROPERTY_OVERRIDES += \
+    net.tethering.noprovisioning=true
 
 $(call inherit-product-if-exists, vendor/samsung/n7100/n7100-vendor.mk)

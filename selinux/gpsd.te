@@ -1,0 +1,17 @@
+#for text relocs & execution
+allow gpsd system_file:file { execute_no_trans execmod };
+allow gpsd gps_device:chr_file { getattr setattr };
+allow gpsd gps_data_file:dir { search write add_name remove_name };
+allow gpsd gps_data_file:fifo_file { unlink create setattr getattr rw_file_perms };
+
+allow gpsd node:udp_socket { node_bind name_bind };
+allow gpsd port:tcp_socket name_connect;
+allow gpsd self:tcp_socket { getopt write read };
+
+allow gpsd sysfs:file { setattr write };
+allow gpsd gps_device:chr_file { ioctl open read write };
+allow gpsd gpsd:udp_socket { create bind };
+allow gpsd gpsd:tcp_socket { create connect };
+allow gpsd fwmarkd_socket:sock_file write;
+allow gpsd dnsproxyd_socket:sock_file write;
+allow gpsd netd:unix_stream_socket connectto;

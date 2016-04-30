@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#define ALOG_TAG "Sensors"
+
 #include <hardware/sensors.h>
 #include <fcntl.h>
 #include <errno.h>
@@ -22,6 +24,7 @@
 #include <poll.h>
 #include <pthread.h>
 #include <stdlib.h>
+#include <cstring>
 
 #include <linux/input.h>
 
@@ -71,38 +74,38 @@ static const struct sensor_t sSensorList[] = {
         { "LSM330DLC Acceleration Sensor",
           "STMicroelectronics",
           1, SENSORS_ACCELERATION_HANDLE,
-          SENSOR_TYPE_ACCELEROMETER, RANGE_A, CONVERT_A, 0.23f, 20000, 0, 0, 
-          SENSOR_STRING_TYPE_ACCELEROMETER, 0, 0, SENSOR_FLAG_CONTINUOUS_MODE, { } },
+          SENSOR_TYPE_ACCELEROMETER, RANGE_A, CONVERT_A, 0.23f, 20000, 0, 0,
+          SENSOR_STRING_TYPE_ACCELEROMETER, "", 0, SENSOR_FLAG_CONTINUOUS_MODE, { } },
         { "AK8963C Magnetic field Sensor",
           "Asahi Kasei Microdevices",
           1, SENSORS_MAGNETIC_FIELD_HANDLE,
-          SENSOR_TYPE_MAGNETIC_FIELD, 2000.0f, CONVERT_M, 6.8f, 16667, 0, 0, 
-          SENSOR_STRING_TYPE_MAGNETIC_FIELD, 0, 0, SENSOR_FLAG_CONTINUOUS_MODE, { } },
+          SENSOR_TYPE_MAGNETIC_FIELD, 2000.0f, CONVERT_M, 6.8f, 16667, 0, 0,
+          SENSOR_STRING_TYPE_MAGNETIC_FIELD, "", 0, SENSOR_FLAG_CONTINUOUS_MODE, { } },
         { "AK8963C Orientation Sensor",
           "Asahi Kasei Microdevices",
           1, SENSORS_ORIENTATION_HANDLE,
-          SENSOR_TYPE_ORIENTATION, 360.0f, CONVERT_O, 7.8f, 16667, 0, 0, 
-          SENSOR_STRING_TYPE_ORIENTATION, 0, 200, SENSOR_FLAG_CONTINUOUS_MODE, { } },
+          SENSOR_TYPE_ORIENTATION, 360.0f, CONVERT_O, 7.8f, 16667, 0, 0,
+          SENSOR_STRING_TYPE_ORIENTATION, "", 0, SENSOR_FLAG_CONTINUOUS_MODE, { } },
         { "LSM330DLC Gyroscope Sensor",
           "STMicroelectronics",
           1, SENSORS_GYROSCOPE_HANDLE,
-          SENSOR_TYPE_GYROSCOPE, RANGE_GYRO, CONVERT_GYRO, 6.1f, 1190, 0, 0, 
-          SENSOR_STRING_TYPE_GYROSCOPE, 0, 200, SENSOR_FLAG_CONTINUOUS_MODE, { } },
+          SENSOR_TYPE_GYROSCOPE, RANGE_GYRO, CONVERT_GYRO, 6.1f, 1190, 0, 0,
+          SENSOR_STRING_TYPE_GYROSCOPE, "", 0, SENSOR_FLAG_CONTINUOUS_MODE, { } },
         { "BMP182 Pressure sensor",
           "Bosch",
           1, SENSORS_PRESSURE_HANDLE,
           SENSOR_TYPE_PRESSURE, 1100.0f, 0.01f, 0.06f, 50000, 0, 0,
-          SENSOR_STRING_TYPE_PRESSURE, 0, 200, SENSOR_FLAG_CONTINUOUS_MODE, { } },
+          SENSOR_STRING_TYPE_PRESSURE, "", 0, SENSOR_FLAG_CONTINUOUS_MODE, { } },
         { "CM36651 Proximity Sensor",
           "Capella Microsystems",
           1, SENSORS_PROXIMITY_HANDLE,
           SENSOR_TYPE_PROXIMITY, 5.0f, 5.0f, 0.75f, 0, 0, 0,
-          SENSOR_STRING_TYPE_PROXIMITY, 0, 0, SENSOR_FLAG_WAKE_UP | SENSOR_FLAG_ON_CHANGE_MODE, { } },
+          SENSOR_STRING_TYPE_PROXIMITY, "", 0, SENSOR_FLAG_WAKE_UP, { } },
         { "CM36651 Light Sensor",
           "Capella Microsystems",
           1, SENSORS_LIGHT_HANDLE,
-          SENSOR_TYPE_LIGHT, 10240.0f, 1.0f, 0.75f, 0, 0, 0, 
-          SENSOR_STRING_TYPE_LIGHT, 0, 0, SENSOR_FLAG_ON_CHANGE_MODE, { } },
+          SENSOR_TYPE_LIGHT, 10240.0f, 1.0f, 0.75f, 0, 0, 0,
+          SENSOR_STRING_TYPE_LIGHT, "", 0, SENSOR_FLAG_CONTINUOUS_MODE, { } },
 };
 
 
@@ -184,7 +187,7 @@ private:
             case ID_PR:
                 return pressure;
         }
-        return -1;
+        return -EINVAL;
     }
 };
 
@@ -245,12 +248,10 @@ sensors_poll_context_t::~sensors_poll_context_t() {
 }
 
 int sensors_poll_context_t::activate(int handle, int enabled) {
-    if (!mInitialized)
-        return -EINVAL;
+    if (!mInitialized) return -EINVAL;
     int index = handleToDriver(handle);
-    ALOGI("Sensors: enable(%d) handle: %i (index:%i)", enabled, handle, index);
-    if (index < 0)
-        return -EINVAL;
+    //ALOGI("Sensors: handle: %i", handle);
+    if (index < 0) return index;
     int err =  mSensors[index]->enable(handle, enabled);
     if (enabled && !err) {
         const char wakeMessage(WAKE_MESSAGE);

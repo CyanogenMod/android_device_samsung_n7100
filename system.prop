@@ -1,9 +1,9 @@
 #
-# system.prop for n7100
+# system.prop for smdk4x12
 #
 
 dalvik.vm.dexopt-data-only=1
-rild.libpath=/system/lib/libsec-ril.so
+rild.libpath=/system/lib/ril-wrapper.so
 rild.libargs=-d /dev/ttyS0
 ro.sf.lcd_density=320
 ro.lcd_min_brightness=20

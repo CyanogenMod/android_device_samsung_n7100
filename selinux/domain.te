@@ -1,2 +1,1 @@
-## /dev/mali, /dev/ump
-allow domain mali_device:chr_file rw_file_perms;
+dontaudit domain kernel:system module_request;

@@ -21,10 +21,11 @@
 
 #include <sys/cdefs.h>
 #include <sys/types.h>
+#include <cstring>
 
 #include <linux/input.h>
 
-#include <utils/Log.h>
+#include <cutils/log.h>
 
 #include "InputEventReader.h"
 

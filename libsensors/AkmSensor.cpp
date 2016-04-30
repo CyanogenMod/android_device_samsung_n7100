@@ -22,8 +22,11 @@
 #include <dirent.h>
 #include <sys/select.h>
 #include <dlfcn.h>
+#include <cstring>
 
-#include <utils/Log.h>
+#include "ak8973b.h"
+
+#include <cutils/log.h>
 #include "AkmSensor.h"
 
 #define LOGTAG "AkmSensor"
@@ -78,6 +81,11 @@ AkmSensor::AkmSensor()
 
     memset(mPendingEvents, 0, sizeof(mPendingEvents));
 
+    mPendingEvents[Accelerometer].version = sizeof(sensors_event_t);
+    mPendingEvents[Accelerometer].sensor = ID_A;
+    mPendingEvents[Accelerometer].type = SENSOR_TYPE_ACCELEROMETER;
+    mPendingEvents[Accelerometer].acceleration.status = SENSOR_STATUS_UNRELIABLE;
+
     mPendingEvents[MagneticField].version = sizeof(sensors_event_t);
     mPendingEvents[MagneticField].sensor = ID_M;
     mPendingEvents[MagneticField].type = SENSOR_TYPE_MAGNETIC_FIELD;
@@ -86,6 +94,19 @@ AkmSensor::AkmSensor()
     // read the actual value of all sensors if they're enabled already
     struct input_absinfo absinfo;
     short flags = 0;
+
+    if (akm_is_sensor_enabled(SENSOR_TYPE_ACCELEROMETER))  {
+        mEnabled |= 1<<Accelerometer;
+        if (!ioctl(data_fd, EVIOCGABS(EVENT_TYPE_ACCEL_X), &absinfo)) {
+            mPendingEvents[Accelerometer].acceleration.x = absinfo.value * CONVERT_A_X;
+        }
+        if (!ioctl(data_fd, EVIOCGABS(EVENT_TYPE_ACCEL_Y), &absinfo)) {
+            mPendingEvents[Accelerometer].acceleration.y = absinfo.value * CONVERT_A_Y;
+        }
+        if (!ioctl(data_fd, EVIOCGABS(EVENT_TYPE_ACCEL_Z), &absinfo)) {
+            mPendingEvents[Accelerometer].acceleration.z = absinfo.value * CONVERT_A_Z;
+        }
+    }
     if (akm_is_sensor_enabled(SENSOR_TYPE_MAGNETIC_FIELD))  {
         mEnabled |= 1<<MagneticField;
         if (!ioctl(data_fd, EVIOCGABS(EVENT_TYPE_MAGV_X), &absinfo)) {
@@ -117,6 +138,7 @@ int AkmSensor::enable(int32_t handle, int en)
     int what = -1;
 
     switch (handle) {
+        case ID_A: what = Accelerometer; break;
         case ID_M: what = MagneticField; break;
         case ID_O: what = Orientation;   break;
     }
@@ -163,6 +185,7 @@ int AkmSensor::setDelay(int32_t handle, int64_t ns)
         return -EINVAL;
 
     switch (handle) {
+        case ID_A: sensor_type = SENSOR_TYPE_ACCELEROMETER; break;
         case ID_M: sensor_type = SENSOR_TYPE_MAGNETIC_FIELD; break;
     }
 
@@ -186,6 +209,24 @@ int AkmSensor::setDelay(int32_t handle, int64_t ns)
      }
 
     mDelays[what] = ns;
+    return update_delay();
+}
+
+int AkmSensor::update_delay()
+{
+    if (mEnabled) {
+        uint64_t wanted = -1LLU;
+        for (int i=0 ; i<numSensors ; i++) {
+            if (mEnabled & (1<<i)) {
+                uint64_t ns = mDelays[i];
+                wanted = wanted < ns ? wanted : ns;
+            }
+        }
+        short delay = int64_t(wanted) / 1000000;
+        if (ioctl(dev_fd, ECS_IOCTL_APP_SET_DELAY, &delay)) {
+            return -errno;
+        }
+    }
     return 0;
 }
 
@@ -269,6 +310,13 @@ void AkmSensor::processEvent(int code, int value)
         case EVENT_TYPE_MAGV_Z:
             mPendingMask |= 1<<MagneticField;
             mPendingEvents[MagneticField].magnetic.z = value * CONVERT_M_Z;
+            break;
+        case EVENT_TYPE_MAGV_ACC:
+            ALOGV("AkmSensor: MAGV_ACC=>%d", value);
+            mPendingMask |= 1<<MagneticField;
+            mPendingEvents[MagneticField].magnetic.status = value;
+        default:
+            ALOGV("AkmSensor: unkown REL event code=%d, value=%d", code, value);
             break;
     }
 }

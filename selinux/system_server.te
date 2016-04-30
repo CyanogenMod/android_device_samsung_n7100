@@ -1,0 +1,38 @@
+allow system_server input_device:chr_file { read ioctl write open };
+allow system_server sensors_device:chr_file { read open };
+allow system_server sensors_data_file:file r_file_perms;
+allow system_server wpa_socket:unix_dgram_socket sendto;
+
+allow system_server sysfs:file { read open write };
+allow system_server sysfs_display:lnk_file rw_file_perms;
+allow system_server sysfs_display:dir rw_dir_perms;
+allow system_server sysfs_display:file rw_file_perms;
+allow system_server self:capability { sys_module };
+
+allow system_server efs_file:dir search;
+allow system_server efs_file:file read;
+allow system_server efs_device_file:dir search;
+allow system_server uhid_device:chr_file { read ioctl write open };
+allow system_server storage_stub_file:dir getattr;
+
+
+# for sensors
+allow system_server system_file:file execmod;
+
+# /efs/wifi/.mac.info
+allow system_server wifi_data_file:file { read open };
+
+allow system_server radio_data:dir r_dir_perms;
+
+allow system_server gpsd:binder transfer;
+type_transition system_server system_data_file:fifo_file gps_data_file ".gps.interface.pipe.to_jni";
+
+# Access .gps.interface.pipe.to_gpsd.
+allow system_server gps_data_file:dir rw_dir_perms;
+allow system_server gps_data_file:fifo_file { setattr rw_file_perms create };
+
+# Access /data/sensors/gps* socket
+allow system_server gps_data_file:sock_file create_file_perms;
+allow system_server gps_data_file:dir rw_dir_perms;
+allow system_server gps_data_file:file rw_file_perms;
+

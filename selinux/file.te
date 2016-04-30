@@ -1,5 +1,11 @@
 type firmware_mfc, file_type;
-type firmware_camera, file_type;
+type firmware_exynos, file_type;
 
 type sensors_data_file, file_type, data_file_type;
-type volume_data_file, file_type, data_file_type;
+type sysfs_display, fs_type, sysfs_type;
+
+type efs_device_file, file_type;
+type radio_data, file_type;
+type sysfs_radio, fs_type, sysfs_type;
+type sysfs_sensor, fs_type, sysfs_type;
+type cbd_device, dev_type;

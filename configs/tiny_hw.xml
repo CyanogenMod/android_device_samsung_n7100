@@ -132,16 +132,16 @@ We are able to have most of our routing static so do that
 <device name="speaker">
     <path name="on">
         <ctl name="SPK Switch" val="1"/>
-        <ctl name="AIF1DAC1 Volume" val="96"/>
+        <ctl name="AIF1DAC1 Volume" val="98"/>
         <ctl name="AIF1 Boost Volume" val="0"/>
-        <ctl name="DAC1 Volume" val="96"/>
+        <ctl name="DAC1 Volume" val="98"/>
         <ctl name="Left Output Mixer DAC Volume" val="7"/>
         <ctl name="Right Output Mixer DAC Volume" val="7"/>
         <ctl name="SPKL DAC1 Volume" val="1"/>
         <ctl name="SPKR DAC1 Volume" val="1"/>
         <ctl name="Speaker Mixer Volume" val="3"/>
         <ctl name="Speaker Boost Volume" val="4"/>
-        <ctl name="Speaker Volume" val="57"/>
+        <ctl name="Speaker Volume" val="59"/>
     </path>
     <path name="off">
         <ctl name="SPK Switch" val="0"/>
@@ -158,16 +158,19 @@ We are able to have most of our routing static so do that
         <ctl name="AIF2ADC HPF Switch" val="1"/>
         <ctl name="AIF1DAC1 Volume" val="96"/>
         <ctl name="AIF2DAC Volume" val="96"/>
-        <ctl name="AIF1 Boost Volume" val="0"/>
-        <ctl name="AIF2 Boost Volume" val="0"/>
+        <ctl name="AIF1 Boost Volume" val="1"/>
+        <ctl name="AIF2 Boost Volume" val="1"/>
         <ctl name="DAC1 Volume" val="96"/>
         <ctl name="Left Output Mixer DAC Volume" val="7"/>
         <ctl name="Right Output Mixer DAC Volume" val="7"/>
-        <ctl name="Output Volume" val="57"/>
+        <ctl name="Output Volume" val="60"/>
         <ctl name="Earpiece Volume" val="1"/>
     </path>
     <path name="off">
         <ctl name="RCV Switch" val="0"/>
+        <ctl name="AIF1 Boost Volume" val="0"/>
+        <ctl name="AIF2 Boost Volume" val="0"/>
+        <ctl name="Output Volume" val="57"/>
     </path>
 </device>
 <device name="headphone">
@@ -261,12 +264,11 @@ We are able to have most of our routing static so do that
     <path name="on">
         <ctl name="Main Mic Switch" val="1"/>
         <ctl name="MainMicBias Mode" val="1"/>
-        <ctl name="IN2L Volume" val="28"/>
+        <ctl name="IN2L Volume" val="22"/>
         <ctl name="MIXINL IN2L Switch" val="1"/>
         <ctl name="MIXINL IN2L Volume" val="1"/>
         <ctl name="AIF1ADCL Source" val="Left"/>
         <ctl name="AIF1ADCR Source" val="Left"/>
-        <ctl name="AIF1ADC2L Mixer ADC/DMIC Switch" val="1"/>
         <ctl name="AIF1ADC1R Mixer ADC/DMIC Switch" val="1"/>
         <ctl name="AIF1ADC1 HPF Mode" val="1"/>
         <ctl name="AIF1ADC1 HPF Switch" val="1"/>
@@ -282,7 +284,7 @@ We are able to have most of our routing static so do that
     <path name="on">
         <ctl name="Sub Mic Switch" val="1"/>
         <ctl name="SubMicBias Mode" val="1"/>
-        <ctl name="IN1R Volume" val="28"/>
+        <ctl name="IN1R Volume" val="22"/>
         <ctl name="MIXINR IN1R Switch" val="1"/>
         <ctl name="MIXINR IN1R Volume" val="1"/>
         <ctl name="AIF1ADCR Source" val="1"/>
@@ -307,11 +309,9 @@ We are able to have most of our routing static so do that
         <ctl name="AIF2ADCL Source" val="0"/>
         <ctl name="AIF1ADCL Source" val="Left"/>
         <ctl name="AIF1ADCL Source" val="Right"/>
-        <ctl name="AIF1ADC2L Mixer ADC/DMIC Switch" val="1"/>
-        <ctl name="AIF1ADC2L Mixer ADC/DMIC Switch" val="1"/>
-        <ctl name="IN1L Volume" val="18"/>
+        <ctl name="IN1L Volume" val="22"/>
         <ctl name="MIXINL IN1L Switch" val="1"/>
-        <ctl name="MIXINL IN1L Volume" val="0"/>
+        <ctl name="MIXINL IN1L Volume" val="1"/>
         <ctl name="AIF1ADC1 HPF Mode" val="1"/>
         <ctl name="AIF1ADC1 HPF Switch" val="1"/>
         <ctl name="AIF1ADC1 Volume" val="96"/>

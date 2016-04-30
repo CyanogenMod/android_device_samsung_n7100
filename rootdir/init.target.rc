@@ -1,4 +1,5 @@
 on init
+    export LD_SHIM_LIBS /system/lib/libsec-ril.so|libsamsung_symbols.so:/system/bin/gpsd|libdmitry.so
     # Vibetonz
     export VIBE_PIPE_PATH /dev/pipes
     mkdir /dev/pipes 0771 shell shell
@@ -11,21 +12,7 @@ on post-fs-data
     symlink /dev/block/mmcblk0p7 /dev/block/param
 
     # Restorecon
-    restorecon /efs/nv_data.bin
-    restorecon /efs/nv_data.bin.md5
-    restorecon /efs/.nv_core.bak
-    restorecon /efs/.nv_core.bak.md5
-    restorecon /efs/.nv_data.bak
-    restorecon /efs/.nv_data.bak.md5
-    restorecon /efs/.nv_state
-    restorecon /efs/bluetooth/bt_addr
-    restorecon /efs/FactoryApp/factorymode
-    restorecon /efs/FactoryApp/hw_ver
-    restorecon /efs/FactoryApp/keystr
-    restorecon /efs/FactoryApp/serial_no
-    restorecon /efs/imei/mps_code.dat
-    restorecon /efs/gyro_cal_data
-    restorecon /efs/wifi/.mac.info
+    restorecon_recursive /efs
 
     # SensorHub
     chown system radio /sys/class/sensors/ssp_sensor/enable
@@ -40,33 +27,16 @@ on post-fs-data
 
 on boot
 
-# icd
-service icd /system/bin/icd
-    class main
-    user system
-    group system log
-    onrestart exec icd_check
-
 # cbd
 service cpboot-daemon /sbin/cbd -d -p 10
     class main
     user root
     group radio cache inet misc audio sdcard_rw log
 
-# sensorhub
-service sensorhubservice /system/bin/sensorhubservice
-    class main
-    user system
-    group input
-
-# GPS
-service gpsd /system/bin/gpsd -c /system/etc/gps.xml
+# Start GPS daemon
+service gps-daemon /system/bin/sh /system/bin/gps_daemon.sh
     class main
     socket gps seqpacket 0660 gps system
     user gps
-    group system inet sdcard_rw
-
-service dmb /system/bin/dmbserver
-    class main
-    user system
-    group radio inet misc audio camera graphics net_bt net_bt_admin sdcard_rw
+    group system inet sdcard_rw gps
+    ioprio be 0

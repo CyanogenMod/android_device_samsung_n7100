@@ -1,0 +1,3 @@
+allow domain log_device:chr_file { open write };
+allow domain log_device:dir { search };
+allow { shell debuggerd } log_device:chr_file { read };

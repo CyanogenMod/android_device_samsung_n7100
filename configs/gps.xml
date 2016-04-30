@@ -10,13 +10,12 @@
        FactoryTestFilePath="/data/"
 
        Log="JAVA"
-       acLogDirectory="/sdcard/gps/broadcom/storage"
+       acLogDirectory="/storage/sdcard0/gps/broadcom/storage"
 
        TISEnabled="true"
        LPmode="false"
        cp-cold-start="false"
        cp-guard-time-sec="1"
-
        arp-supl-enable="true"
        arp-supl-cap-msb="true"
        arp-supl-cap-msa="true"
@@ -42,6 +41,7 @@
        acLtoDir="/data/gps/"
        LbsSyncLtoThresholdDays="1"
        LbsTAC="10101106"
+       LbsCellEnable="false" 
        ctrlPipe="/data/gps/glgpsctrl"
        LbsWlanEnable="false"
 
@@ -55,7 +55,7 @@
 
   <gll
        LogPriMask="LOG_INFO"
-       LogFacMask="LOG_RAWDATA | LOG_DEVKF | LOG_GLLAPI | LOG_NMEA"
+       LogFacMask="LOG_GLLIO | LOG_RAWDATA | LOG_DEVKF | LOG_GLLAPI | LOG_NMEA"
        FrqPlan="FRQ_PLAN_26MHZ_2PPM_26MHZ_300PPB"
        RfType="GL_RF_4752_BRCM_EXT_LNA"
        WarmStandbyTimeout1Seconds="10"

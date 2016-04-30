@@ -1,7 +1,20 @@
 allow rild self:netlink_socket { create bind read write };
 allow rild self:netlink_route_socket { write };
 allow rild self:netlink_kobject_uevent_socket { create bind read write setopt };
+allow rild rild:process { execmem };
+
+allow rild radio_data_file:dir setattr;
+allow rild unlabeled:dir search;
+
+allow radio log_device:chr_file w_file_perms;
+allow rild log_device:chr_file w_file_perms;
+allow rild system_file:file execmod;
+allow rild radio_data:file create_file_perms;
+allow rild radio_data:dir create_dir_perms;
 
 allow rild radio_device:chr_file rw_file_perms;
 allow rild efs_block_device:blk_file rw_file_perms;
 allow rild efs_file:file { read open write setattr };
+
+allow rild efs_device_file:dir create_dir_perms;
+allow rild efs_device_file:file { setattr create create_file_perms };
