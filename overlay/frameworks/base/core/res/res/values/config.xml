@@ -323,8 +323,6 @@
     -->
     <string translatable="false" name="config_radio_access_family">GPRS|EDGE|WCDMA</string>
 
-    <!-- Hardware keys on/off option -->
-    <bool name="config_hwKeysPref">true</bool>
 
     <!-- Older rotation sensors are not setting event.timestamp correctly. Setting to
          true will use SystemClock.elapsedRealtimeNanos() to set timestamp. -->
