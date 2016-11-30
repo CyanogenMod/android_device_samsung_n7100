@@ -17,4 +17,5 @@
 
 <resources xmlns:xliff="urnasis:names:tc:xliff:document:1.2 ">
     <bool name="has_powercontrol_widget">true</bool>
+    <bool name="has_advanced_settings">true</bool>
 </resources>
